@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        //// Jai shree ram
+
+
         Handler(Looper.myLooper()!!).postDelayed(
             {
                 /** check if customer token is not empty **/
