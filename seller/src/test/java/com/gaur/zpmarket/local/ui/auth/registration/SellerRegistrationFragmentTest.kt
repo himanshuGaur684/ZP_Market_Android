@@ -1,9 +1,10 @@
 package com.gaur.zpmarket.local.ui.auth.registration
 
-import android.service.autofill.Validators.not
-import android.support.test.filters.SmallTest
+import androidx.test.filters.SmallTest
 import com.gaur.zpmarket.local.ui.auth.AuthUtils
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
+
+
 import org.junit.Test
 
 @SmallTest
@@ -11,6 +12,7 @@ class SellerRegistrationFragmentTest {
 
     @Test
     fun `enter empty fields`() {
+
         assertEquals(
             AuthUtils.sellerRegistrationValidator(
                 "",
