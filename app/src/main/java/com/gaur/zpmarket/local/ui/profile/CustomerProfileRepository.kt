@@ -7,7 +7,6 @@ import com.gaur.zpmarket.utils.SafeApiRequest
 
 class CustomerProfileRepository(private val customerRetrofitInterface: CustomerRetrofitInterface) {
 
-
     suspend fun getCustomerProfile(customerId: String): Result<CustomerProfileResponse> {
         return SafeApiRequest.handleApiCall {
             customerRetrofitInterface.getCustomerProfile(
@@ -15,6 +14,4 @@ class CustomerProfileRepository(private val customerRetrofitInterface: CustomerR
             )
         }
     }
-
-
 }

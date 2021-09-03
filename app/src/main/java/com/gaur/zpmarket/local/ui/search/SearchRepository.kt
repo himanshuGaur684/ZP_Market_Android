@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.Flow
 
 class SearchRepository(private val customerRetrofitInterface: CustomerRetrofitInterface) {
 
-
     fun getSearchPagingProducts(q: String): Flow<PagingData<Product>> {
-        return Pager(config = PagingConfig(
-            pageSize = 10, enablePlaceholders = false, prefetchDistance = 5
-        ), pagingSourceFactory = { SearchPagination(q, customerRetrofitInterface) }).flow
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10, enablePlaceholders = false, prefetchDistance = 5
+            ),
+            pagingSourceFactory = { SearchPagination(q, customerRetrofitInterface) }
+        ).flow
     }
-
-
 }

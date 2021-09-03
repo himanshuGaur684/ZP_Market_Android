@@ -12,7 +12,6 @@ import com.gaur.zpmarket.utils.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.cache
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,11 +23,9 @@ class CustomerHomeViewModel @Inject constructor(private val repository: Customer
         MutableStateFlow<Events<Result<HomeResponse>>>(Events(Result.empty()))
     val homeResponse: StateFlow<Events<Result<HomeResponse>>> = _homeResponse
 
-
     private val _categoriesList =
         MutableStateFlow<Events<Result<CategoryResponse>>>(Events(Result.empty()))
     val categoriesList: StateFlow<Events<Result<CategoryResponse>>> = _categoriesList
-
 
     val newestProductFlow = repository.getNewestProducts().cachedIn(viewModelScope)
 
@@ -46,30 +43,23 @@ class CustomerHomeViewModel @Inject constructor(private val repository: Customer
     )
     val recentlyViewedProducts: StateFlow<Events<Result<List<Product>>>> = _recentlyViewedProducts
 
-
     init {
         getHomeResponse()
         getAllRecentlyViewedProducts()
-
     }
-
 
     fun getHomeResponse() = viewModelScope.launch {
         _homeResponse.value = Events(Result(Status.LOADING, null, null))
         _homeResponse.value = Events(repository.getHomeResponse())
     }
 
-
     fun getAllCategories() = viewModelScope.launch {
         _categoriesList.value = Events(Result(Status.LOADING, null, null))
         _categoriesList.value = Events(repository.getCategoriesList())
     }
 
-
     fun getAllRecentlyViewedProducts() = viewModelScope.launch {
         _recentlyViewedProducts.value = Events(Result(Status.LOADING, null, null))
         _recentlyViewedProducts.value = Events(repository.getLimitedRecentlyViewedProducts())
     }
-
-
 }

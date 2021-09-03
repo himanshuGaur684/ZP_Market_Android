@@ -9,18 +9,13 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val searchRepository: SearchRepository) :
     ViewModel() {
 
-
     private val q = MutableLiveData<String>()
-
 
     fun postSearch(q: String) {
         this.q.postValue(q)
     }
 
-
     val searchList = q.switchMap {
         searchRepository.getSearchPagingProducts(it).asLiveData().cachedIn(viewModelScope)
     }
-
-
 }

@@ -10,7 +10,6 @@ object AuthUtils {
     const val MOBILE_NUMBER = "Please enter Mobile Number"
     const val NOT_MATCH_PASSWORD = "Password not matches correctly"
 
-
     fun isEmailValid(email: CharSequence): Boolean {
         val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
         val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
@@ -66,6 +65,4 @@ object AuthUtils {
         }
         return ""
     }
-
-
 }

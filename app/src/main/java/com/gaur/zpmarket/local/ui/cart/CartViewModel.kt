@@ -21,10 +21,8 @@ class CartViewModel @Inject constructor(
     private val homeRepository: CustomerHomeRepository
 ) : ViewModel() {
 
-
     private val _postCart = MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
     val postCart: StateFlow<Events<Result<ServerMessage>>> = _postCart
-
 
     private val customerId = MutableLiveData<String>()
 

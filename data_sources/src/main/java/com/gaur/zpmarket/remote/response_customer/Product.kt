@@ -22,9 +22,9 @@ data class Product(
     val rating: Double,
     val reviews: Int,
     val sellerId: String,
-    val productDetails:String,
-    val productFeatures:String,
-    val packagingDetails:String,
-    val cashOnDelivery:Boolean,
-    val stocks:Int=-1
+    val productDetails: String,
+    val productFeatures: String,
+    val packagingDetails: String,
+    val cashOnDelivery: Boolean,
+    val stocks: Int = -1
 ) : Parcelable

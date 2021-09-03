@@ -26,10 +26,8 @@ import kotlinx.coroutines.flow.collect
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import javax.inject.Inject
-
 
 @AndroidEntryPoint
 class AddProductFragment : Fragment() {
@@ -41,18 +39,15 @@ class AddProductFragment : Fragment() {
 
     private var file: File? = null
 
-
     private val imageListAdapter = AddProductImageAdapter()
     private var imageList = HashMap<Uri, File>()
     private val imagePartList = mutableListOf<MultipartBody.Part>()
-
 
     private var productCategoryId = ""
 
     private var _binding: FragmentAddProductBinding? = null
     val binding: FragmentAddProductBinding
         get() = _binding!!
-
 
     private val startForProfileImageResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -65,7 +60,6 @@ class AddProductFragment : Fragment() {
                     imageList[data.data!!] = it
                     imageListAdapter.setContentList(imageList.keys.toMutableList())
                 }
-
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
                 Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
                     .show()
@@ -74,19 +68,18 @@ class AddProductFragment : Fragment() {
             }
         }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddProductBinding.inflate(inflater, container, false)
         return _binding?.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         bottomNavigationVisibilityGone(requireActivity())
@@ -101,7 +94,6 @@ class AddProductFragment : Fragment() {
         imageUploading()
         imageUploadingObservables()
     }
-
 
     override fun onStart() {
         bottomNavigationVisibilityGone(requireActivity())
@@ -126,7 +118,6 @@ class AddProductFragment : Fragment() {
             }.show()
     }
 
-
     private fun imageUploading() {
 
         /** Initialize the Upload Image Recycler View **/
@@ -148,11 +139,11 @@ class AddProductFragment : Fragment() {
             if (imageList.size != 4) {
                 ImagePicker.with(requireActivity())
                     .compress(500)
-                    .crop()//Final image size will be less than 1 MB(Optional)
+                    .crop() // Final image size will be less than 1 MB(Optional)
                     .maxResultSize(
                         1080,
                         1080
-                    )//Final image resolution will be less than 1080 x 1080(Optional)
+                    ) // Final image resolution will be less than 1080 x 1080(Optional)
                     .createIntent {
                         startForProfileImageResult.launch(it)
                     }
@@ -160,7 +151,6 @@ class AddProductFragment : Fragment() {
                 requireContext().makeToast("You can upload only 4 images")
             }
         }
-
 
         /**  Upload Product Image Details **/
         binding.uploadProductImages.setOnClickListener {
@@ -217,10 +207,9 @@ class AddProductFragment : Fragment() {
                 discountPrice,
                 marketPrice,
                 sellerId,
-                productDetails,productFeatures,productPackaging,viewModel.addObservables.cashOnDelivery
+                productDetails, productFeatures, productPackaging, viewModel.addObservables.cashOnDelivery
             )
         }
-
     }
 
     private fun imageUploadingObservables() {
@@ -254,5 +243,4 @@ class AddProductFragment : Fragment() {
             }
         }
     }
-
 }

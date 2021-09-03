@@ -5,5 +5,5 @@ data class SellerRegistrationResponseObject(
     val seller: Seller,
     val success: Boolean,
     val token: String,
-    val refreshToken:String
+    val refreshToken: String
 )

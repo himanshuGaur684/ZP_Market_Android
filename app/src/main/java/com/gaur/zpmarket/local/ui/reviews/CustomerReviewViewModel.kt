@@ -19,7 +19,6 @@ import javax.inject.Inject
 class CustomerReviewViewModel @Inject constructor(private val customerReviewRepository: CustomerReviewRepository) :
     ViewModel() {
 
-
     private val productId = MutableLiveData<String>()
 
     private val customerId = MutableLiveData<String>()
@@ -39,7 +38,6 @@ class CustomerReviewViewModel @Inject constructor(private val customerReviewRepo
         MutableStateFlow<Events<Result<PagingReviewResponse>>>(Events(Result.empty()))
     val reviewListOnly5: StateFlow<Events<Result<PagingReviewResponse>>> = _reviewListOnly5
 
-
     private val _postReview =
         MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
     val postReview: StateFlow<Events<Result<ServerMessage>>> = _postReview
@@ -48,9 +46,7 @@ class CustomerReviewViewModel @Inject constructor(private val customerReviewRepo
         MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
     val deleteReview: StateFlow<Events<Result<ServerMessage>>> = _deleteReview
 
-
-
-    private val _updateReview=  MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
+    private val _updateReview = MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
     val updateReview: StateFlow<Events<Result<ServerMessage>>> = _updateReview
 
     fun getReviewOnly5(productId: String) = viewModelScope.launch {
@@ -80,11 +76,8 @@ class CustomerReviewViewModel @Inject constructor(private val customerReviewRepo
         customerId.postValue(it)
     }
 
-
-    fun updateReview(review:Review)=viewModelScope.launch {
-        _updateReview.value = Events(Result(Status.LOADING,null,null))
+    fun updateReview(review: Review) = viewModelScope.launch {
+        _updateReview.value = Events(Result(Status.LOADING, null, null))
         _updateReview.value = Events(customerReviewRepository.updateReviews(review))
     }
-
-
 }

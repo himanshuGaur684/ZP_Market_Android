@@ -24,41 +24,34 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class AddReviewFragment : Fragment() {
-
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
-
     private val viewModel: CustomerReviewViewModel by viewModels()
-
 
     private var _binding: FragmentAddReviewBinding? = null
     val binding: FragmentAddReviewBinding
         get() = _binding!!
 
-
     private val args: AddReviewFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddReviewBinding.inflate(inflater, container, false)
         return _binding?.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
 
         binding.addReviewToolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
@@ -87,8 +80,6 @@ class AddReviewFragment : Fragment() {
             return
         }
 
-
-
         args.product?.let {
             viewModel.postReview(
                 sharedPreferences.getString(CustomerConstants.CUSTOMER_AUTH_TOKEN, "")
@@ -97,7 +88,8 @@ class AddReviewFragment : Fragment() {
                     comment,
                     sharedPreferences.getString(CustomerConstants.CUSTOMER_ID, "").toString(),
                     rating.toString(), Tempo.now.toString()
-                ), it._id
+                ),
+                it._id
             )
         }
 
@@ -127,13 +119,12 @@ class AddReviewFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun deleteReview() {
         val token =
             sharedPreferences.getString(CustomerConstants.CUSTOMER_AUTH_TOKEN, "").toString()
-        Log.d("TAG", "deleteReview: ${token}")
+        Log.d("TAG", "deleteReview: $token")
         args.review?.let {
             AlertDialog.Builder(requireContext()).setTitle("Delete Review")
                 .setMessage("Are you sure?").setPositiveButton("Ok") { _, _ ->
@@ -141,7 +132,6 @@ class AddReviewFragment : Fragment() {
                 }.setNeutralButton("Cancel") { _, _ ->
                     requireContext().makeToast("Cancel")
                 }.show()
-
         }
 
         /**  Delete Review Observable  **/
@@ -170,8 +160,5 @@ class AddReviewFragment : Fragment() {
                 }
             }
         }
-
-
     }
-
 }

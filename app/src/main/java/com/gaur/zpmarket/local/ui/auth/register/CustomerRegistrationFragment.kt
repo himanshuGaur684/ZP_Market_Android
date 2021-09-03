@@ -26,11 +26,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class CustomerRegistrationFragment : Fragment() {
 
-
     private var _binding: FragmentCustomerRegistrationBinding? = null
     val binding: FragmentCustomerRegistrationBinding
         get() = _binding!!
-
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -39,27 +37,24 @@ class CustomerRegistrationFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCustomerRegistrationBinding.inflate(inflater, container, false)
         return _binding?.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.viewModel = viewModel
-
 
         binding.customerRegisterButton.setOnClickListener {
             binding.root.hideKeyboard()
             customerRegistrationValidation()
         }
-
 
         lifecycle.coroutineScope.launchWhenCreated {
             viewModel.registration.collect {
@@ -76,7 +71,6 @@ class CustomerRegistrationFragment : Fragment() {
                             startActivity(Intent(requireContext(), ContainerActivity::class.java))
                             requireActivity().finish()
                         }
-
                     }
                     Status.ERROR -> {
                         binding.customerProgress.visibility = View.GONE
@@ -88,8 +82,6 @@ class CustomerRegistrationFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
     private fun collectSharedPreferences(it: CustomerRegistrationResponse) {
@@ -100,10 +92,9 @@ class CustomerRegistrationFragment : Fragment() {
             putString(CustomerConstants.CUSTOMER_ID, it.custumer._id).apply()
             putString(CustomerConstants.CUSTOMER_MOBILE_NUMBER, it.custumer.mobileNumber).apply()
             putString(CustomerConstants.CUSTOMER_PIN_CODE, it.custumer.pincode).apply()
-            putString(CustomerConstants.CUSTOMER_REFRESH_TOKEN,it.refreshToken).apply()
+            putString(CustomerConstants.CUSTOMER_REFRESH_TOKEN, it.refreshToken).apply()
         }
     }
-
 
     private fun customerRegistrationValidation() {
         val message = CustomerAuthUtils.customerRegistrationValidation(
@@ -128,6 +119,4 @@ class CustomerRegistrationFragment : Fragment() {
             requireContext().makeToast(message)
         }
     }
-
-
 }

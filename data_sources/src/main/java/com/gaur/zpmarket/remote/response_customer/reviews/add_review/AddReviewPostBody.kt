@@ -4,5 +4,5 @@ data class AddReviewPostBody(
     val comment: String,
     val customer: String,
     val rating: String,
-    val date:String
+    val date: String
 )

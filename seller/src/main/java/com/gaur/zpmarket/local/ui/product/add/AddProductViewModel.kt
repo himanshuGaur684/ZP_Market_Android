@@ -22,25 +22,20 @@ class AddProductViewModel @Inject constructor(private val repository: AddProduct
 
     val addObservables = AddProductObservables("", "", "", "", "", "", "", false)
 
-
     private val _postProduct =
         MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
     val postProduct: StateFlow<Events<Result<ServerMessage>>> = _postProduct
 
-
     private val _product =
         MutableStateFlow<Events<Result<SingleProductResponse>>>(Events(Result.empty()))
     val product: StateFlow<Events<Result<SingleProductResponse>>> = _product
-
 
     private val _delete = MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
     val delete: StateFlow<Events<Result<ServerMessage>>> = _delete
 
     var categoryList = HashMap<String, String>()
 
-    var editCategoryList  = MutableLiveData<HashMap<String,String>>()
-
-
+    var editCategoryList = MutableLiveData<HashMap<String, String>>()
 
     fun postProduct(
         image: List<MultipartBody.Part>,
@@ -74,10 +69,7 @@ class AddProductViewModel @Inject constructor(private val repository: AddProduct
                 requestBodyCOD
             )
         )
-
-
     }
-
 
     fun editProducts(
         id: String,
@@ -110,12 +102,10 @@ class AddProductViewModel @Inject constructor(private val repository: AddProduct
         )
     }
 
-
     fun deleteProduct(id: String) = viewModelScope.launch {
         _delete.value = Events(Result(Status.LOADING, null, null))
         _delete.value = Events(repository.deleteProduct(id))
     }
-
 
     fun getAllProductCategory() = viewModelScope.launch {
         repository.getAllProductCategory().forEach {
@@ -123,22 +113,19 @@ class AddProductViewModel @Inject constructor(private val repository: AddProduct
         }
     }
 
-    fun getEditTextProductCategory()=viewModelScope.launch {
-        Result(Status.LOADING,null,null)
+    fun getEditTextProductCategory() = viewModelScope.launch {
+        Result(Status.LOADING, null, null)
         val k = repository.getAllProductCategory()
-        val m = HashMap<String,String>()
-        for(i in k.indices){
-            m[k[i].name]=k[i]._id
+        val m = HashMap<String, String>()
+        for (i in k.indices) {
+            m[k[i].name] = k[i]._id
         }
         editCategoryList.postValue(m)
-        Result(Status.SUCCESS,m,null)
+        Result(Status.SUCCESS, m, null)
     }
-
 
     fun getSingleProduct(id: String) = viewModelScope.launch {
         _product.value = Events(Result(Status.LOADING, null, null))
         _product.value = Events(repository.getSingleProduct(id))
     }
-
-
 }

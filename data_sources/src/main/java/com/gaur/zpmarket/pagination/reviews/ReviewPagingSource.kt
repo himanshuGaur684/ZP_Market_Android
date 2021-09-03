@@ -2,11 +2,9 @@ package com.gaur.zpmarket.pagination.reviews
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.gaur.zpmarket.pagination.reviews.review_paging_response.PagingReviewResponse
 import com.gaur.zpmarket.pagination.reviews.review_paging_response.Review
 import com.gaur.zpmarket.remote.DataSourcesInterface
 import com.gaur.zpmarket.utils.SafeApiRequest
-
 
 private const val STARTING_PAGE_INDEX = 1
 
@@ -16,7 +14,6 @@ class ReviewPagingSource(
     private val dataSourcesInterface: DataSourcesInterface
 ) :
     PagingSource<Int, Review>() {
-
 
     override fun getRefreshKey(state: PagingState<Int, Review>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

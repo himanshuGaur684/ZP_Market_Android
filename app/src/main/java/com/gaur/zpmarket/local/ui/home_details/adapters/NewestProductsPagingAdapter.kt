@@ -2,7 +2,6 @@ package com.gaur.zpmarket.local.ui.home_details.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,8 +9,7 @@ import com.gaur.zpmarket.databinding.ViewHolderNewestProductBinding
 import com.gaur.zpmarket.remote.response_customer.Product
 
 class NewestProductsPagingAdapter() :
-    PagingDataAdapter<Product,NewestProductsPagingAdapter.MyViewHolder>(DIFF_UTIL) {
-
+    PagingDataAdapter<Product, NewestProductsPagingAdapter.MyViewHolder>(DIFF_UTIL) {
 
     companion object {
         val DIFF_UTIL = object : DiffUtil.ItemCallback<Product>() {
@@ -23,20 +21,17 @@ class NewestProductsPagingAdapter() :
         }
     }
 
-
-    inner class MyViewHolder(val viewDataBinding: ViewHolderNewestProductBinding):RecyclerView.ViewHolder(viewDataBinding.root)
+    inner class MyViewHolder(val viewDataBinding: ViewHolderNewestProductBinding) : RecyclerView.ViewHolder(viewDataBinding.root)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): NewestProductsPagingAdapter.MyViewHolder {
-      val binding= ViewHolderNewestProductBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ViewHolderNewestProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NewestProductsPagingAdapter.MyViewHolder, position: Int) {
-      holder.viewDataBinding.product = getItem(position)
+        holder.viewDataBinding.product = getItem(position)
     }
-
-
 }

@@ -7,10 +7,7 @@ import com.gaur.zpmarket.utils.SafeApiRequest
 
 class ProductDetailsRepository(private val dataSourcesInterface: DataSourcesInterface) {
 
-
-suspend fun getSingleProduct(id:String):Result<Product>{
-    return SafeApiRequest.handleApiCall { dataSourcesInterface.getSingleProduct(id) }
-}
-
-
+    suspend fun getSingleProduct(id: String): Result<Product> {
+        return SafeApiRequest.handleApiCall { dataSourcesInterface.getSingleProduct(id) }
+    }
 }

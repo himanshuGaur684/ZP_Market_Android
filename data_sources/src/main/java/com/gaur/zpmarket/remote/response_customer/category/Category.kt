@@ -11,4 +11,4 @@ data class Category(
     @PrimaryKey(autoGenerate = false)
     val _id: String,
     val name: String
-): Parcelable
+) : Parcelable

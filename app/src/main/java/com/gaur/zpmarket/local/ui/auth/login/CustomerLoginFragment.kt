@@ -29,7 +29,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class CustomerLoginFragment : Fragment() {
 
-
     private var _binding: FragmentCustomerLoginBinding? = null
     val binding: FragmentCustomerLoginBinding
         get() = _binding!!
@@ -41,17 +40,16 @@ class CustomerLoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCustomerLoginBinding.inflate(inflater, container, false)
         return _binding?.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -60,7 +58,6 @@ class CustomerLoginFragment : Fragment() {
         binding.customerGoToRegisterPage.setOnClickListener {
             findNavController().navigate(CustomerLoginFragmentDirections.actionCustomerLoginFragmentToCustomerRegistrationFragment())
         }
-
 
         binding.sellerLogin.setOnClickListener {
             startActivity(Intent(requireContext(), SellerActivity::class.java))
@@ -84,8 +81,6 @@ class CustomerLoginFragment : Fragment() {
             }
         }
 
-
-
         lifecycle.coroutineScope.launchWhenCreated {
             viewModel.login.collect {
                 when (it.getContentIfNotHandled()?.status) {
@@ -98,7 +93,7 @@ class CustomerLoginFragment : Fragment() {
                         binding.customerLoginButton.visibility = View.VISIBLE
                         it.peekContent().data?.let {
                             updateSharedPreferences(it)
-                            Log.d("TAG", "onViewCreated: ${it}")
+                            Log.d("TAG", "onViewCreated: $it")
                         }
                         startActivity(Intent(requireContext(), ContainerActivity::class.java))
                         requireActivity().finish()
@@ -110,7 +105,6 @@ class CustomerLoginFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun updateSharedPreferences(it: CustomerRegistrationResponse) {
@@ -124,6 +118,4 @@ class CustomerLoginFragment : Fragment() {
             putString(CustomerConstants.CUSTOMER_REFRESH_TOKEN, it.refreshToken).apply()
         }
     }
-
-
 }

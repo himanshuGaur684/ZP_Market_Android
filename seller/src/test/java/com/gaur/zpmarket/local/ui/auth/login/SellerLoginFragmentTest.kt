@@ -8,7 +8,6 @@ import org.junit.Test
 @SmallTest
 class SellerLoginFragmentTest {
 
-
     @Test
     fun `email is Empty`() {
         assertEquals(
@@ -40,5 +39,4 @@ class SellerLoginFragmentTest {
             "Password Length must be greater than 8"
         )
     }
-
 }

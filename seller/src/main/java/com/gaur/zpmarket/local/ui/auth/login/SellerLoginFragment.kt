@@ -36,11 +36,11 @@ class SellerLoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
@@ -66,9 +66,7 @@ class SellerLoginFragment : Fragment() {
                     requireContext().makeToast(validator)
                 }
             }
-
         }
-
     }
 
     private fun viewModelsObservables() {
@@ -97,9 +95,7 @@ class SellerLoginFragment : Fragment() {
                 }
             }
         }
-
     }
-
 
     private fun updateSharedPreferences(sellerRegistrationResponseObject: SellerRegistrationResponseObject) {
         sharedPreferences.edit().apply {
@@ -121,12 +117,9 @@ class SellerLoginFragment : Fragment() {
                 SellerConstants.SELLER_REFRESH_TOKEN,
                 sellerRegistrationResponseObject.refreshToken
             ).apply()
-
         }.apply()
 
         startActivity(Intent(requireContext(), SellerContainerActivity::class.java))
         requireActivity().finish()
     }
-
-
 }

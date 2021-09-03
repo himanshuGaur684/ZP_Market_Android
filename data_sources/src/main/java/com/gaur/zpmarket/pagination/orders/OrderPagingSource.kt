@@ -5,14 +5,12 @@ import androidx.paging.PagingState
 import com.gaur.zpmarket.remote.CustomerRetrofitInterface
 import com.gaur.zpmarket.utils.SafeApiRequest
 
-
 const val STARTING_PAGE_INDEX = 1
 
 class OrderPagingSource(
     private val customerId: String,
     private val customerRetrofitInterface: CustomerRetrofitInterface
 ) : PagingSource<Int, Order>() {
-
 
     override fun getRefreshKey(state: PagingState<Int, Order>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

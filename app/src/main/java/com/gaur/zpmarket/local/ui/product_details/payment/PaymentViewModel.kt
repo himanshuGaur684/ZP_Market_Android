@@ -25,14 +25,12 @@ class PaymentViewModel @Inject constructor(private val paymentRepository: Paymen
     )
     val orderResponse: StateFlow<Events<Result<ServerMessage>>> = _orderResponse
 
-
     private val _orderId: MutableStateFlow<Events<Result<OrderIdResponse>>> = MutableStateFlow(
         Events(
             Result.empty()
         )
     )
     val orderId: StateFlow<Events<Result<OrderIdResponse>>> = _orderId
-
 
     fun postOrder(order: PostOrder) = viewModelScope.launch {
         _orderResponse.value = Events(Result(Status.LOADING, null, null))
@@ -43,6 +41,4 @@ class PaymentViewModel @Inject constructor(private val paymentRepository: Paymen
         _orderId.value = Events(Result(Status.LOADING, null, null))
         _orderId.value = Events(paymentRepository.getOrderId(amount))
     }
-
-
 }

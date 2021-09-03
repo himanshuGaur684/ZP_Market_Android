@@ -14,4 +14,3 @@ data class Result(
     val newestArrived: List<Product>,
     val zp_market_assured: List<Product>
 )
-

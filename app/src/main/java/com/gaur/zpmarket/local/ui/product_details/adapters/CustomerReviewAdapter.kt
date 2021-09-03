@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaur.zpmarket.databinding.ViewHolderCustomerReviewsBinding
 import com.gaur.zpmarket.pagination.reviews.review_paging_response.Review
 
-
 class CustomerReviewAdapter() : RecyclerView.Adapter<CustomerReviewAdapter.MyViewHolder>() {
 
     private var list = listOf<Review>()
@@ -17,13 +16,10 @@ class CustomerReviewAdapter() : RecyclerView.Adapter<CustomerReviewAdapter.MyVie
         this.list = list
         notifyDataSetChanged()
         return
-
-
     }
 
     inner class MyViewHolder(val viewDataBinding: ViewHolderCustomerReviewsBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root)
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -55,6 +51,4 @@ class CustomerReviewAdapter() : RecyclerView.Adapter<CustomerReviewAdapter.MyVie
     override fun getItemCount(): Int {
         return this.list.size
     }
-
-
 }

@@ -26,34 +26,33 @@ class CustomerHomeRepository(
 
     suspend fun getHomeResponse(): Result<HomeResponse> {
 
-        try{
+        try {
             val response = retrofitInterface.getHomePageDetails()
-            if(response.isSuccessful){
-                Result(Status.SUCCESS,response.body(),null)
-            }else{
-                Result(Status.ERROR,null,"Something went wrong ")
+            if (response.isSuccessful) {
+                Result(Status.SUCCESS, response.body(), null)
+            } else {
+                Result(Status.ERROR, null, "Something went wrong ")
             }
-        }catch (e:Exception){
-            Result(Status.ERROR,null,e.message)
+        } catch (e: Exception) {
+            Result(Status.ERROR, null, e.message)
         }
 
         return SafeApiRequest.handleApiCall { retrofitInterface.getHomePageDetails() }
     }
-
 
     suspend fun getCategoriesList(): Result<CategoryResponse> {
         return SafeApiRequest.handleApiCall { dataSourcesInterface.getAllCategory() }
     }
 
     fun getNewestProducts(): Flow<PagingData<Product>> {
-        return Pager(config = PagingConfig(
-            pageSize = 10,
-            enablePlaceholders = false,
-        ),
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = false,
+            ),
             pagingSourceFactory = { NewProductsPagingSource(dataSourcesInterface) }
         ).flow
     }
-
 
     fun getZpAssuredProducts(): Flow<PagingData<Product>> {
         return Pager(
@@ -66,7 +65,6 @@ class CustomerHomeRepository(
         ).flow
     }
 
-
     fun getParticularCategoriesProductList(id: String): Flow<PagingData<Product>> {
         return Pager(
             config = PagingConfig(
@@ -74,24 +72,23 @@ class CustomerHomeRepository(
                 enablePlaceholders = false,
                 prefetchDistance = 5
             ),
-            pagingSourceFactory = { CategoriesProductPagingSource(id, dataSourcesInterface) }).flow
+            pagingSourceFactory = { CategoriesProductPagingSource(id, dataSourcesInterface) }
+        ).flow
     }
 
-
-    suspend fun recentlyViewedProducts(products:Product){
-        val list =zpMarketDao.getAllRecentlyViewedProducts()
-        if(list.size==6){
+    suspend fun recentlyViewedProducts(products: Product) {
+        val list = zpMarketDao.getAllRecentlyViewedProducts()
+        if (list.size == 6) {
             zpMarketDao.deleteRecentlyViewedProducts(list[5])
         }
         zpMarketDao.insertRecentlyViewedProducts(products)
     }
 
-    suspend fun getLimitedRecentlyViewedProducts():Result<List<Product>>{
-        return Result(Status.SUCCESS,zpMarketDao.getAllRecentlyViewedProducts(),null)
+    suspend fun getLimitedRecentlyViewedProducts(): Result<List<Product>> {
+        return Result(Status.SUCCESS, zpMarketDao.getAllRecentlyViewedProducts(), null)
     }
 
-    suspend fun insertRecentlyViewedProduct(product: Product){
+    suspend fun insertRecentlyViewedProduct(product: Product) {
         zpMarketDao.insertRecentlyViewedProducts(product)
     }
-
 }

@@ -14,7 +14,6 @@ import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.*
 
-
 interface SellerRetrofitInterface {
 
     /**--------------------------------------- Auth ---------------------------------**/
@@ -29,10 +28,8 @@ interface SellerRetrofitInterface {
         @Body sellerLoginBody: SellerLoginObject
     ): Response<SellerRegistrationResponseObject>
 
-
     @POST("custumer/refresh_token")
     suspend fun refreshToken(@Body refreshTokenBody: RefreshTokenBody): Response<RefreshTokenResponse>
-
 
     /**-----------------------  Get All Seller Products------------------------**/
 
@@ -41,7 +38,6 @@ interface SellerRetrofitInterface {
         @Query("page") page: Int,
         @Query("limit") limit: Int
     ): Response<SellerProductResponse>
-
 
     /**------------------------  Products  ---------------------------------------**/
 
@@ -63,10 +59,8 @@ interface SellerRetrofitInterface {
         @Part("cashOnDelivery") requestBodyCOD: Boolean
     ): Response<ServerMessage>
 
-
     @GET("ecom/seller/products/{id}")
     suspend fun getSingleProduct(@Path("id") id: String): Response<SingleProductResponse>
-
 
     @PATCH("ecom/seller/products/{id}")
     suspend fun editProducts(
@@ -75,12 +69,9 @@ interface SellerRetrofitInterface {
         @Body req: EditProduct
     ): Response<ServerMessage>
 
-
     @DELETE("ecom/seller/products/{id}")
     suspend fun deleteProduct(
         @Path("id") id: String,
         @Header("Authorization") token: String
     ): Response<ServerMessage>
-
-
 }

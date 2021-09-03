@@ -17,7 +17,6 @@ class AddProductImageAdapter() : RecyclerView.Adapter<AddProductImageAdapter.MyV
         notifyDataSetChanged()
     }
 
-
     inner class MyViewHolder(val viewDataBinding: ViewHolderAddProductImagesBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root)
 
@@ -49,5 +48,4 @@ class AddProductImageAdapter() : RecyclerView.Adapter<AddProductImageAdapter.MyV
     override fun getItemCount(): Int {
         return this.list.size
     }
-
 }

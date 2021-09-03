@@ -10,8 +10,7 @@ import com.gaur.zpmarket.remote.CustomerRetrofitInterface
 import com.gaur.zpmarket.utils.CustomerConstants
 import kotlinx.coroutines.flow.Flow
 
-class OrderRepository(private val sharedPreferences: SharedPreferences,private val customerRetrofitInterface: CustomerRetrofitInterface) {
-
+class OrderRepository(private val sharedPreferences: SharedPreferences, private val customerRetrofitInterface: CustomerRetrofitInterface) {
 
     fun getPaginatedOrder(
         customerId: String = sharedPreferences.getString(
@@ -25,8 +24,8 @@ class OrderRepository(private val sharedPreferences: SharedPreferences,private v
                 pageSize = 10,
                 prefetchDistance = 5,
                 enablePlaceholders = false
-            ), pagingSourceFactory = { OrderPagingSource(customerId,customerRetrofitInterface) }).flow
-
+            ),
+            pagingSourceFactory = { OrderPagingSource(customerId, customerRetrofitInterface) }
+        ).flow
     }
-
 }
