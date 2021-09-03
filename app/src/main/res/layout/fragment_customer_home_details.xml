@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".local.ui.home_details.CustomerHomeDetailsFragment">
+
+        <Toolbar
+            android:id="@+id/customer_home_details_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/purple_500">
+
+            <ImageView
+                android:id="@+id/customer_home_details_toolbar_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_whie" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/customer_home_details_toolbar_title"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Categories"
+                android:textColor="@color/white" />
+        </Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/customer_home_details_recycler"
+            android:layout_width="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/customer_home_details_toolbar"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2" />
+
+
+    </RelativeLayout>
+</layout>

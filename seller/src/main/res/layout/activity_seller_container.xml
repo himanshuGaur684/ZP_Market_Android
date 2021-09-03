@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.gaur.zpmarket.SellerContainerActivity">
+
+
+        <fragment
+            android:id="@+id/seller_container_view"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_navigation_view"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/seller_navigation" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/purple_200"
+            app:itemIconTint="@drawable/bottom_navigation_color_view"
+            app:itemRippleColor="@color/orange"
+            app:itemTextColor="@drawable/bottom_navigation_color_view"
+            app:labelVisibilityMode="selected"
+            app:menu="@menu/seller_bottom_navigation_view" />
+
+
+    </RelativeLayout>
+</layout>

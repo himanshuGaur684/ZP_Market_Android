@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customer_auth_navigation"
+    app:startDestination="@id/customerLoginFragment">
+
+    <fragment
+        android:id="@+id/customerLoginFragment"
+        android:name="com.gaur.zpmarket.local.ui.auth.login.CustomerLoginFragment"
+        android:label="CustomerLoginFragment" >
+        <action
+            android:id="@+id/action_customerLoginFragment_to_customerRegistrationFragment"
+            app:destination="@id/customerRegistrationFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerRegistrationFragment"
+        android:name="com.gaur.zpmarket.local.ui.auth.register.CustomerRegistrationFragment"
+        android:label="CustomerRegistrationFragment" />
+</navigation>

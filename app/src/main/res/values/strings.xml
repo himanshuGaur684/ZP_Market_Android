@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ZP Market</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cancel_request_title">Are you sure you want to send a cancellation request?</string>
+    <string name="cancel_request_subtitle">Your request will be sent to our team</string>
+    <string name="cancel_request_charges">₹ 5 charge will applied</string>
+</resources>

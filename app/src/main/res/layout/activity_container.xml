@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="true"
+        tools:context=".ContainerActivity">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <fragment
+                android:id="@+id/customer_fragment_container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/customers_bottom_navigation_view"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/customer_navigation" />
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/customers_bottom_navigation_view"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/purple_500"
+                app:itemIconTint="@drawable/customer_bottom_navigation_view"
+                app:itemRippleColor="@color/orange"
+                app:itemTextColor="@drawable/customer_bottom_navigation_view"
+                app:labelVisibilityMode="selected"
+                app:menu="@menu/customer_bottom_navigation_menu" />
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/customer_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/surface_color"
+            app:itemIconTint="@color/black"
+
+            app:itemTextColor="@color/black"
+            app:menu="@menu/customer_toolbar_menu" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</layout>

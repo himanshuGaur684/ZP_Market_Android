@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cutomer_navigation"
+    app:startDestination="@id/customerHomeFragment">
+
+    <fragment
+        android:id="@+id/customerHomeFragment"
+        android:name="com.gaur.zpmarket.local.ui.home.CustomerHomeFragment"
+        android:label="CustomerHomeFragment" >
+        <action
+            android:id="@+id/action_customerHomeFragment_to_customerHomeDetailsFragment"
+            app:destination="@id/customerHomeDetailsFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_customerHomeFragment_to_customerProductDetailsFragment"
+            app:destination="@id/customerProductDetailsFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_customerHomeFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerHomeDetailsFragment"
+        android:name="com.gaur.zpmarket.local.ui.home_details.CustomerHomeDetailsFragment"
+        android:label="CustomerHomeDetailsFragment" >
+        <argument
+            android:name="categories"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="newest_products"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="zp_assured"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="categories_id"
+            app:argType="com.gaur.zpmarket.remote.response_customer.category.Category"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_customerHomeDetailsFragment_to_customerProductDetailsFragment"
+            app:destination="@id/customerProductDetailsFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.gaur.zpmarket.local.ui.orders.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_ordersFragment_to_customerProductDetailsFragment"
+            app:destination="@id/customerProductDetailsFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.gaur.zpmarket.local.ui.profile.CustomerProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_customer_profile" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.gaur.zpmarket.local.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/customerProductDetailsFragment"
+        android:name="com.gaur.zpmarket.local.ui.product_details.CustomerProductDetailsFragment"
+        android:label="CustomerProductDetailsFragment" >
+        <argument
+            android:name="product_details"
+            app:argType="com.gaur.zpmarket.remote.response_customer.Product"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_customerProductDetailsFragment_to_customerReviewFragment"
+            app:destination="@id/customerReviewFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_customerProductDetailsFragment_to_addReviewFragment"
+            app:destination="@id/addReviewFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="is_order"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerReviewFragment"
+        android:name="com.gaur.zpmarket.local.ui.reviews.CustomerReviewFragment"
+        android:label="CustomerReviewFragment" >
+        <argument
+            android:name="product_id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="customer_id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_customerReviewFragment_to_addReviewFragment"
+            app:destination="@id/addReviewFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/addReviewFragment"
+        android:name="com.gaur.zpmarket.local.ui.reviews.add_review.AddReviewFragment"
+        android:label="AddReviewFragment" >
+        <argument
+            android:name="product"
+            app:argType="com.gaur.zpmarket.remote.response_customer.Product"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="review"
+            app:argType="com.gaur.zpmarket.pagination.reviews.review_paging_response.Review"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="is_editing"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.gaur.zpmarket.local.ui.search.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_customerProductDetailsFragment"
+            app:destination="@id/customerProductDetailsFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+</navigation>

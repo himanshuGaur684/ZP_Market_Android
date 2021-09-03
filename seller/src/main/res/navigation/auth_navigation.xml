@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/sellerLoginFragment">
+
+    <fragment
+        android:id="@+id/sellerLoginFragment"
+        android:name="com.gaur.zpmarket.local.ui.auth.login.SellerLoginFragment"
+        android:label="fragment_seller_login"
+        tools:layout="@layout/fragment_seller_login" >
+        <action
+            android:id="@+id/action_sellerLoginFragment_to_sellerRegistrationFragment"
+            app:destination="@id/sellerRegistrationFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/sellerRegistrationFragment"
+        android:name="com.gaur.zpmarket.local.ui.auth.registration.SellerRegistrationFragment"
+        android:label="SellerRegistrationFragment" />
+</navigation>

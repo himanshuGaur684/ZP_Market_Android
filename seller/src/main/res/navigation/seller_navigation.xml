@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seller_navigation"
+    app:startDestination="@id/showProductFragment">
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.gaur.zpmarket.local.ui.product.add.AddProductFragment"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" >
+    </fragment>
+    <fragment
+        android:id="@+id/showProductFragment"
+        android:name="com.gaur.zpmarket.local.ui.product.show_product.ShowProductFragment"
+        android:label="ShowProductFragment" >
+        <action
+            android:id="@+id/action_showProductFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation" />
+        <action
+            android:id="@+id/action_showProductFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/sellerOrderFragment"
+        android:name="com.gaur.zpmarket.local.ui.orders.SellerOrderFragment"
+        android:label="fragment_seller_order"
+        tools:layout="@layout/fragment_seller_order" />
+    <fragment
+        android:id="@+id/sellerProfileFragment"
+        android:name="com.gaur.zpmarket.local.ui.profile.SellerProfileFragment"
+        android:label="fragment_seller_profile"
+        tools:layout="@layout/fragment_seller_profile" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.gaur.zpmarket.local.ui.product.details_products.SellerProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@Null" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_editProductFragment"
+            app:destination="@id/editProductFragment"
+            app:enterAnim="@anim/fragment_animation"
+            app:exitAnim="@anim/fragment_exit_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProductFragment"
+        android:name="com.gaur.zpmarket.local.ui.product.edit_product.EditProductFragment"
+        android:label="EditProductFragment" >
+        <argument
+            android:name="edit_product"
+            app:argType="com.gaur.zpmarket.remote.response_customer.Product"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>
