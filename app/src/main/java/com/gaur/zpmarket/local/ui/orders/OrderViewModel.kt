@@ -7,8 +7,5 @@ import javax.inject.Inject
 @HiltViewModel
 class OrderViewModel @Inject constructor(private val repository: OrderRepository) : ViewModel() {
 
-
     val orderList = repository.getPaginatedOrder()
-
-
 }

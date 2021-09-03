@@ -4,7 +4,6 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.gaur.zpmarket.seller.BR
 
-
 class CustomerLoginObservables(email: String, password: String) : BaseObservable() {
 
     @get:Bindable
@@ -20,5 +19,4 @@ class CustomerLoginObservables(email: String, password: String) : BaseObservable
             field = value
             notifyPropertyChanged(BR.password)
         }
-
 }

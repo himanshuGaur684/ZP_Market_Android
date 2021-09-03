@@ -19,7 +19,6 @@ class AddProductRepository(
     private val sharedPreferences: SharedPreferences
 ) {
 
-
     suspend fun postProducts(
         image: List<MultipartBody.Part>,
         name: RequestBody,
@@ -51,9 +50,7 @@ class AddProductRepository(
                 requestBodyCOD
             )
         }
-
     }
-
 
     suspend fun editProducts(
         id: String,
@@ -87,9 +84,7 @@ class AddProductRepository(
                 )
             )
         }
-
     }
-
 
     suspend fun deleteProduct(id: String): Result<ServerMessage> {
         return SafeApiRequest.handleApiCall {
@@ -107,5 +102,4 @@ class AddProductRepository(
     suspend fun getSingleProduct(id: String): Result<SingleProductResponse> {
         return SafeApiRequest.handleApiCall { sellerRetrofitInterface.getSingleProduct(id) }
     }
-
 }

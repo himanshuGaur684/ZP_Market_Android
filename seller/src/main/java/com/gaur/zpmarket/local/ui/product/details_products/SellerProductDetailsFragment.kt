@@ -23,7 +23,6 @@ import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
 class SellerProductDetailsFragment : Fragment() {
 
-
     private var _binding: FragmentProductDetailsBinding? = null
     val binding: FragmentProductDetailsBinding
         get() = _binding!!
@@ -33,7 +32,6 @@ class SellerProductDetailsFragment : Fragment() {
 
     private val viewModel: AddProductViewModel by viewModels()
 
-
     private var _product: Product? = null
     val product: Product
         get() = _product!!
@@ -42,11 +40,11 @@ class SellerProductDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentProductDetailsBinding.inflate(inflater, container, false)
@@ -68,7 +66,7 @@ class SellerProductDetailsFragment : Fragment() {
         }
 
         binding.sellerEditProducts.setOnClickListener {
-            Log.d("TAG", "onViewCreated: ${product}")
+            Log.d("TAG", "onViewCreated: $product")
 
             findNavController().navigate(
                 SellerProductDetailsFragmentDirections.actionProductDetailsFragmentToEditProductFragment(
@@ -76,7 +74,6 @@ class SellerProductDetailsFragment : Fragment() {
                 )
             )
         }
-
 
         binding.sellerDeleteProducts.setOnClickListener {
             viewModel.deleteProduct(product._id)
@@ -96,7 +93,6 @@ class SellerProductDetailsFragment : Fragment() {
                         it.peekContent().data?.let {
                             findNavController().popBackStack()
                             requireContext().makeToast(it.message)
-
                         }
                     }
                     Status.ERROR -> {
@@ -109,7 +105,6 @@ class SellerProductDetailsFragment : Fragment() {
                 }
             }
         }
-
 
         /**  Single Product Responses Flow Collector **/
         lifecycle.coroutineScope.launchWhenCreated {
@@ -135,10 +130,7 @@ class SellerProductDetailsFragment : Fragment() {
                 }
             }
         }
-
-
     }
-
 
     override fun onStart() {
         bottomNavigationVisibilityGone(requireActivity())
@@ -152,5 +144,4 @@ class SellerProductDetailsFragment : Fragment() {
         bottomNavigationVisibilityGone(requireActivity())
         super.onResume()
     }
-
 }

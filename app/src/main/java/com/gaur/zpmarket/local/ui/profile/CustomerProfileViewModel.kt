@@ -24,11 +24,8 @@ class CustomerProfileViewModel @Inject constructor(private val repository: Custo
 
     val profile: StateFlow<Events<Result<CustomerProfileResponse>>> = _profile
 
-
     fun getCustomerProfile(customerId: String) = viewModelScope.launch {
         _profile.value = Events(Result(Status.LOADING, null, null))
         _profile.value = Events(repository.getCustomerProfile(customerId))
     }
-
-
 }

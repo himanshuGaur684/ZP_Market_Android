@@ -22,8 +22,6 @@ class ContainerActivity : AppCompatActivity() {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
-
-
     private var _binding: ActivityContainerBinding? = null
     val binding: ActivityContainerBinding
         get() = _binding!!
@@ -35,20 +33,14 @@ class ContainerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_container)
 
-
         navController = findNavController(R.id.customer_fragment_container)
-
-
         drawerLayout = binding.drawerLayout
 
-
         binding.customersBottomNavigationView.setupWithNavController(navController)
-
 
         val navBuilder = NavOptions.Builder().setEnterAnim(R.anim.fragment_animation)
             .setExitAnim(R.anim.fragment_exit_animation).setPopEnterAnim(R.anim.fade_in)
             .setExitAnim(android.R.anim.fade_in).build()
-
 
         binding.customerNavigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -67,17 +59,12 @@ class ContainerActivity : AppCompatActivity() {
                 }
 
                 R.id.profileFragment -> {
-
                 }
-
-
             }
             drawerLayout.closeDrawers()
             return@setNavigationItemSelectedListener false
         }
-
     }
-
 
     fun openNavigationDrawer(item: MenuItem) {
         if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
@@ -86,5 +73,4 @@ class ContainerActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(Gravity.RIGHT)
         }
     }
-
 }

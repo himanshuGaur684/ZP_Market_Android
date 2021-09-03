@@ -4,8 +4,6 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import com.gaur.zpmarket.remote.response_customer.Product
-import kotlinx.android.parcel.Parcelize
-
 
 class AddProductObservables(
     name: String,
@@ -18,17 +16,15 @@ class AddProductObservables(
     cashOnDelivery: Boolean
 ) : BaseObservable() {
 
-
-
-    fun initialize(product:Product){
+    fun initialize(product: Product) {
         name = product.name
-        description= product.description
-        marketPrice= product.marketPrice.toString()
+        description = product.description
+        marketPrice = product.marketPrice.toString()
         discountPrice = product.discountPrice.toString()
         productDetails = product.productDetails
-        productFeatures= product.productFeatures
+        productFeatures = product.productFeatures
         packagingDetails = product.packagingDetails
-        cashOnDelivery= product.cashOnDelivery
+        cashOnDelivery = product.cashOnDelivery
     }
 
     @get:Bindable
@@ -37,7 +33,6 @@ class AddProductObservables(
             field = value
             notifyPropertyChanged(BR.name)
         }
-
 
     @get:Bindable
     var description: String = description
@@ -53,14 +48,12 @@ class AddProductObservables(
             notifyPropertyChanged(BR.marketPrice)
         }
 
-
     @get:Bindable
     var discountPrice: String = discountPrice
         set(value) {
             field = value
             notifyPropertyChanged(BR.discountPrice)
         }
-
 
     @get:Bindable
     var productDetails: String = productDetails
@@ -83,12 +76,10 @@ class AddProductObservables(
             notifyPropertyChanged(BR.packagingDetails)
         }
 
-
     @get:Bindable
     var cashOnDelivery: Boolean = cashOnDelivery
         set(value) {
             field = value
             notifyPropertyChanged(BR.cashOnDelivery)
         }
-
 }

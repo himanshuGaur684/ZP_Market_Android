@@ -15,10 +15,8 @@ import retrofit2.http.*
 
 interface DataSourcesInterface {
 
-
     @GET("/products/category")
     suspend fun getAllCategory(): Response<CategoryResponse>
-
 
     @GET("products/zp_assured")
     suspend fun getZPAssuredLists(
@@ -32,11 +30,10 @@ interface DataSourcesInterface {
         @Query("limit") limit: Int
     ): Response<NewestProductPagingResponse>
 
-
     @GET("products/products/{id}")
     suspend fun getSingleProduct(
-        @Path("id") productId:String
-    ):Response<Product>
+        @Path("id") productId: String
+    ): Response<Product>
 
     @GET("products/category/{id}")
     suspend fun getParticularCategoriesProductList(
@@ -44,7 +41,6 @@ interface DataSourcesInterface {
         @Query("page") page: Int,
         @Query("limit") limit: Int
     ): Response<CategoriesProductListResponse>
-
 
     @GET("product/review/{productId}")
     suspend fun getProductReview(
@@ -58,13 +54,12 @@ interface DataSourcesInterface {
         @Path("productId") productId: String
     ): Response<PagingReviewResponse>
 
-
     @POST("product/review/{productId}")
     suspend fun postProductReview(
         @Header("Authorization") token: String,
-        @Path("productId") productId: String, @Body addReviewPostBody: AddReviewPostBody
+        @Path("productId") productId: String,
+        @Body addReviewPostBody: AddReviewPostBody
     ): Response<ServerMessage>
-
 
     @GET("product/review/customer/{customerId}")
     suspend fun getCustomerReviews(
@@ -72,7 +67,6 @@ interface DataSourcesInterface {
         @Query("page") page: Int,
         @Query("limit") limit: Int
     ): Response<PagingReviewResponse>
-
 
     @GET("customer/cart/{customerId}")
     suspend fun getCustomerCart(
@@ -89,6 +83,4 @@ interface DataSourcesInterface {
 
     @PUT("product/review/{id}")
     suspend fun updateReview(@Body review: Review): Response<ServerMessage>
-
-
 }

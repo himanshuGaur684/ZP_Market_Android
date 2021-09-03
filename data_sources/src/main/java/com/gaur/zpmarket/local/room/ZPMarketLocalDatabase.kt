@@ -9,10 +9,9 @@ import com.gaur.zpmarket.local.typeconvertors.RoomTypeConvertor
 import com.gaur.zpmarket.remote.response_customer.Product
 import com.gaur.zpmarket.remote.response_customer.category.Category
 
-@Database(entities = [Category::class, Product::class], exportSchema = false,version = 1)
+@Database(entities = [Category::class, Product::class], exportSchema = false, version = 1)
 @TypeConverters(RoomTypeConvertor::class)
 abstract class ZPMarketLocalDatabase() : RoomDatabase() {
-
 
     companion object {
         fun getZPMarketDatabaseInstance(context: Context): ZPMarketLocalDatabase {
@@ -21,7 +20,5 @@ abstract class ZPMarketLocalDatabase() : RoomDatabase() {
         }
     }
 
-    abstract fun getZPLocalDatabaseDAO():ZPMarketDao
-
-
+    abstract fun getZPLocalDatabaseDAO(): ZPMarketDao
 }

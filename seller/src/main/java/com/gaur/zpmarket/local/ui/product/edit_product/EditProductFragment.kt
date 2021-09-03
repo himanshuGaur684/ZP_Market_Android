@@ -41,7 +41,6 @@ class EditProductFragment : Fragment() {
     val product: Product
         get() = _product!!
 
-
     private var _binding: FragmentEditProductBinding? = null
     val binding: FragmentEditProductBinding
         get() = _binding!!
@@ -49,24 +48,21 @@ class EditProductFragment : Fragment() {
     private val imageListAdapter = DetailsProductImageAdapter()
     private val pageSnap = PagerSnapHelper()
 
-
     private val args: EditProductFragmentArgs by navArgs()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEditProductBinding.inflate(inflater, container, false)
         viewModel.getAllProductCategory()
         return _binding?.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -83,7 +79,7 @@ class EditProductFragment : Fragment() {
             _product = p
             binding.apply {
 
-                productCategoryId= p.categoryId
+                productCategoryId = p.categoryId
 
                 editSellerProductName.setText(p.name)
                 editSellerDiscountPrice.setText(p.discountPrice.toString())
@@ -107,8 +103,6 @@ class EditProductFragment : Fragment() {
             binding.root.hideKeyboard()
             modifyProduct()
         }
-
-
     }
 
     private fun modifyProduct() {
@@ -161,8 +155,6 @@ class EditProductFragment : Fragment() {
             productDetails = productDetails,
             productFeatures = productFeatures
         )
-
-
     }
 
     /** Observe the changes of edit Observer **/
@@ -192,7 +184,6 @@ class EditProductFragment : Fragment() {
             }
         }
     }
-
 
     override fun onStart() {
         bottomNavigationVisibilityGone(requireActivity())
@@ -226,8 +217,5 @@ class EditProductFragment : Fragment() {
                 binding.editProductCategory.setText(categoryName[index])
             }
         }
-
     }
-
-
 }

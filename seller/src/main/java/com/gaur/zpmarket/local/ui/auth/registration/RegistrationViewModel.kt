@@ -28,7 +28,6 @@ class RegistrationViewModel @Inject constructor(private val authRepository: Auth
         confirmPassword = ""
     )
 
-
     private val _refreshToken =
         MutableStateFlow<Events<Result<RefreshTokenResponse>>>(Events(Result.empty()))
     val refreshToken: StateFlow<Events<Result<RefreshTokenResponse>>> = _refreshToken
@@ -38,7 +37,6 @@ class RegistrationViewModel @Inject constructor(private val authRepository: Auth
     )
     val registration: StateFlow<Events<Result<SellerRegistrationResponseObject>>> = _registration
 
-
     fun sellerRegistration(sellerRegistrationObject: SellerRegistrationObject) =
         viewModelScope.launch {
             _registration.value = Events(Result(Status.LOADING, null, null))
@@ -46,12 +44,9 @@ class RegistrationViewModel @Inject constructor(private val authRepository: Auth
                 Events(authRepository.sellerRegistration(sellerRegistrationObject))
         }
 
-
     fun refreshToken(refreshToken: String) = viewModelScope.launch {
         _refreshToken.value = Events(Result(Status.LOADING, null, null))
         _refreshToken.value =
             Events(authRepository.refreshToken(RefreshTokenBody(refreshToken)))
     }
-
-
 }

@@ -20,7 +20,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DataSourcesHiltModules {
 
-
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
@@ -31,7 +30,6 @@ object DataSourcesHiltModules {
         return Retrofit.Builder().client(client).addConverterFactory(GsonConverterFactory.create())
             .baseUrl(DataSourcesConstants.BASE_URL).build()
     }
-
 
     @Provides
     @Singleton
@@ -50,8 +48,4 @@ object DataSourcesHiltModules {
     fun provideDataSourcesInterface(retrofit: Retrofit): DataSourcesInterface {
         return retrofit.create(DataSourcesInterface::class.java)
     }
-
-
-
-
 }

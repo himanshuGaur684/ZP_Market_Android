@@ -21,11 +21,9 @@ class CartRepository(
     private val sharedPreferences: SharedPreferences
 ) {
 
-
     suspend fun postCart(postBody: CartPostBody): Result<ServerMessage> {
         return SafeApiRequest.handleApiCall { customerRetrofitInterface.postCart(postBody) }
     }
-
 
     fun getCartPagination(
         customerId: String = sharedPreferences.getString(
@@ -33,16 +31,16 @@ class CartRepository(
             ""
         ).toString()
     ): kotlinx.coroutines.flow.Flow<PagingData<Cart>> {
-        Log.d("TAG", "getCartPagination: ${customerId}")
-        return Pager(config = PagingConfig(
-            pageSize = 10,
-            enablePlaceholders = false,
-            prefetchDistance = 5
-        ),
+        Log.d("TAG", "getCartPagination: $customerId")
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = false,
+                prefetchDistance = 5
+            ),
             pagingSourceFactory = {
                 CartPagingSource(customerId, dataSourcesInterface, 10)
-            }).flow
+            }
+        ).flow
     }
-
-
 }

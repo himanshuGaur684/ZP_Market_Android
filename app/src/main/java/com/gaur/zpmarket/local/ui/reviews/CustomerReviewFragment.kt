@@ -19,11 +19,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class CustomerReviewFragment : Fragment() {
 
-
     private var _binding: FragmentCustomerReviewBinding? = null
     val binding: FragmentCustomerReviewBinding
         get() = _binding!!
-
 
     private val args: CustomerReviewFragmentArgs by navArgs()
     private val viewModel: CustomerReviewViewModel by viewModels()
@@ -37,7 +35,8 @@ class CustomerReviewFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCustomerReviewBinding.inflate(inflater, container, false)
@@ -61,10 +60,9 @@ class CustomerReviewFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-
         customerReviewAdapter.itemClickListener {
             if (sharedPreferences.getString(CustomerConstants.CUSTOMER_ID, "")
-                    .toString() == it.customer._id
+                .toString() == it.customer._id
             ) {
                 findNavController().navigate(
                     CustomerReviewFragmentDirections.actionCustomerReviewFragmentToAddReviewFragment(
@@ -83,7 +81,6 @@ class CustomerReviewFragment : Fragment() {
                 customerReviewAdapter.submitData(lifecycle, it)
             }
         }
-
     }
 
     private fun handleProductsReview(it: String) {
@@ -96,7 +93,6 @@ class CustomerReviewFragment : Fragment() {
         }
     }
 
-
     override fun onStart() {
         customerBottomNavigationViewVisibilityGone(requireActivity())
         super.onStart()
@@ -106,5 +102,4 @@ class CustomerReviewFragment : Fragment() {
         customerBottomNavigationViewVisibilityGone(requireActivity())
         super.onResume()
     }
-
 }

@@ -31,13 +31,11 @@ import javax.inject.Singleton
 @Module
 object CustomerHiltModules {
 
-
     @Singleton
     @Provides
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences("pref", MODE_PRIVATE)
     }
-
 
     @Provides
     @Singleton
@@ -50,7 +48,6 @@ object CustomerHiltModules {
             .create(CustomerRetrofitInterface::class.java)
     }
 
-
     @Provides
     fun provideCustomerHomeRepository(
         customerRetrofitInterface: CustomerRetrofitInterface,
@@ -59,7 +56,6 @@ object CustomerHiltModules {
     ): CustomerHomeRepository {
         return CustomerHomeRepository(customerRetrofitInterface, dataSourcesInterface, zpMarketDao)
     }
-
 
     @Provides
     fun provideCustomerRegistrationRepository(customerRetrofitInterface: CustomerRetrofitInterface): CustomerAuthenticationRepository {
@@ -71,21 +67,19 @@ object CustomerHiltModules {
         return CustomerProfileRepository(customerRetrofitInterface)
     }
 
-
     @Provides
     fun provideCustomerReviewRepository(dataSourcesInterface: DataSourcesInterface): CustomerReviewRepository {
         return CustomerReviewRepository(dataSourcesInterface)
     }
 
-
     @Provides
     fun provideCustomerCartRepository(
         customerRetrofitInterface: CustomerRetrofitInterface,
-        dataSourcesInterface: DataSourcesInterface, sharedPreferences: SharedPreferences
+        dataSourcesInterface: DataSourcesInterface,
+        sharedPreferences: SharedPreferences
     ): CartRepository {
         return CartRepository(customerRetrofitInterface, dataSourcesInterface, sharedPreferences)
     }
-
 
     @Provides
     fun provideSearchRepository(customerRetrofitInterface: CustomerRetrofitInterface): SearchRepository {
@@ -109,5 +103,4 @@ object CustomerHiltModules {
     ): OrderRepository {
         return OrderRepository(sharedPreferences, customerRetrofitInterface)
     }
-
 }

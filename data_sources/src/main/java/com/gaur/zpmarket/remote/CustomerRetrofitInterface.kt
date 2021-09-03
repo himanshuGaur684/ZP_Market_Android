@@ -1,6 +1,5 @@
 package com.gaur.zpmarket.remote
 
-
 import com.gaur.zpmarket.pagination.orders.OrderPaginationResponse
 import com.gaur.zpmarket.pagination.search.response.SearchPagingResponse
 import com.gaur.zpmarket.remote.response_customer.auth.login.CustomerLoginBody
@@ -18,7 +17,6 @@ import retrofit2.http.*
 
 interface CustomerRetrofitInterface {
 
-
     /** Authentication  Login**/
     @POST("custumer/login")
     suspend fun customerLogin(@Body customerLoginBody: CustomerLoginBody): Response<CustomerRegistrationResponse>
@@ -27,7 +25,6 @@ interface CustomerRetrofitInterface {
     @POST("custumer/register")
     suspend fun customerRegistration(@Body customerRegisterBody: CustomerRegisterBody): Response<CustomerRegistrationResponse>
 
-
     /** Home Page Details**/
     @GET("ecom/seller/home/page_details")
     suspend fun getHomePageDetails(): Response<HomeResponse>
@@ -35,7 +32,6 @@ interface CustomerRetrofitInterface {
     /** Profile  **/
     @GET("custumer/profile/{customerId}")
     suspend fun getCustomerProfile(@Path("customerId") id: String): Response<CustomerProfileResponse>
-
 
     /**  Add to Cart  **/
     @POST("customer/cart")
@@ -47,8 +43,7 @@ interface CustomerRetrofitInterface {
 
     /**  payment order id creation **/
     @POST("customer/init_order")
-    suspend fun getOrderId(@Body amount:OrderPrice):Response<OrderIdResponse>
-
+    suspend fun getOrderId(@Body amount: OrderPrice): Response<OrderIdResponse>
 
     /** Getting Order pagination **/
     @GET("customer/orders/{customerId}")
@@ -58,12 +53,11 @@ interface CustomerRetrofitInterface {
         @Query("limit") limit: Int
     ): Response<OrderPaginationResponse>
 
-
     /**  Search Query for Products  **/
     @GET("products/search")
     suspend fun searchProductQuery(
-        @Query("q") query: String, @Query("page") page: Int,
+        @Query("q") query: String,
+        @Query("page") page: Int,
         @Query("limit") limit: Int
     ): Response<SearchPagingResponse>
-
 }

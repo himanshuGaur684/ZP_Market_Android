@@ -7,19 +7,14 @@ import com.gaur.zpmarket.pagination.cart.cart_paging_response.CartPagingResponse
 import com.gaur.zpmarket.remote.DataSourcesInterface
 import com.gaur.zpmarket.utils.SafeApiRequest
 
-
-
-
-
 private const val STARTING_PAGE_INDEX = 1
 
 class CartPagingSource(
     private val customerId: String,
     private val dataSourcesInterface: DataSourcesInterface,
-    private val limit:Int
+    private val limit: Int
 ) :
     PagingSource<Int, Cart>() {
-
 
     override fun getRefreshKey(state: PagingState<Int, Cart>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

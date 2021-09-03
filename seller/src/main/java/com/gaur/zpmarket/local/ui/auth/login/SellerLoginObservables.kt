@@ -19,5 +19,4 @@ class SellerLoginObservables(email: String, password: String) : BaseObservable()
             field = value
             notifyPropertyChanged(BR.password)
         }
-
 }

@@ -16,7 +16,6 @@ class ShowProductRepositoryImpl(
     private val databaseDAO: ZPMarketDao
 ) {
 
-
     fun getProductsStream(): Flow<PagingData<Product>> {
         return Pager(
             config = PagingConfig(
@@ -24,10 +23,10 @@ class ShowProductRepositoryImpl(
                 prefetchDistance = 5,
                 enablePlaceholders = false,
                 initialLoadSize = 10
-            ), pagingSourceFactory = { ShowProductsPagingSource(retrofitInterface) }
+            ),
+            pagingSourceFactory = { ShowProductsPagingSource(retrofitInterface) }
         ).flow
     }
-
 
     suspend fun getAllProductCategory() {
         val result = SafeApiRequest.handleApiCall { dataSourcesInterface.getAllCategory() }
@@ -35,7 +34,5 @@ class ShowProductRepositoryImpl(
         result.data?.let {
             databaseDAO.insertAllCategory(it.category)
         }
-
     }
-
 }

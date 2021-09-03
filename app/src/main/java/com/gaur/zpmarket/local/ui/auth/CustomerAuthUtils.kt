@@ -10,7 +10,6 @@ object CustomerAuthUtils {
     const val MOBILE_NUMBER = "Please enter Mobile Number"
     const val NOT_MATCH_PASSWORD = "Password not matches correctly"
 
-
     fun isEmailValid(email: CharSequence): Boolean {
         val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
         val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
@@ -24,7 +23,7 @@ object CustomerAuthUtils {
         mobileNumber: String,
         password: String,
         confirmPassword: String,
-        address:String
+        address: String
     ): String {
 
         if (name.isEmpty()) {
@@ -39,7 +38,7 @@ object CustomerAuthUtils {
         if (password.isEmpty()) {
             return "Password field must be not empty"
         }
-        if(address.isEmpty()){
+        if (address.isEmpty()) {
             return "Address can't be Empty"
         }
 
@@ -70,6 +69,4 @@ object CustomerAuthUtils {
         }
         return ""
     }
-
-
 }

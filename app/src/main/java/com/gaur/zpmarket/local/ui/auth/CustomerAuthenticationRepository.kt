@@ -9,7 +9,6 @@ import com.gaur.zpmarket.utils.SafeApiRequest
 
 class CustomerAuthenticationRepository(private val customerRetrofitInterface: CustomerRetrofitInterface) {
 
-
     suspend fun login(customerLoginBody: CustomerLoginBody): Result<CustomerRegistrationResponse> {
         return SafeApiRequest.handleApiCall {
             customerRetrofitInterface.customerLogin(
@@ -18,7 +17,6 @@ class CustomerAuthenticationRepository(private val customerRetrofitInterface: Cu
         }
     }
 
-
     suspend fun registration(customerRegisterBody: CustomerRegisterBody): Result<CustomerRegistrationResponse> {
         return SafeApiRequest.handleApiCall {
             customerRetrofitInterface.customerRegistration(
@@ -26,6 +24,4 @@ class CustomerAuthenticationRepository(private val customerRetrofitInterface: Cu
             )
         }
     }
-
-
 }

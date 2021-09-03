@@ -40,12 +40,9 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_payment)
-
-
 
         product = intent?.extras?.get("product") as Product
         binding.product = product
@@ -78,7 +75,6 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
 
             generateOrderId(mobileNumber, address, this.quantity)
         }
-
     }
 
     private fun initBinding() {
@@ -92,31 +88,30 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
         binding.orderQuantity.setText(quantity.toString())
     }
 
-
     private fun payment(orderId: String, mobileNumber: String, address: String, quantity: Int) {
         try {
             val checkout = Checkout()
             checkout.setKeyID("rzp_test_IDbE99OEUBbwsX")
             val options = JSONObject()
-            options.put("name", "ZP Market");
-            options.put("description", product.name);
-            options.put("order_id", orderId);
-            options.put("theme.color", "#06307A");
-            options.put("currency", "INR");
+            options.put("name", "ZP Market")
+            options.put("description", product.name)
+            options.put("order_id", orderId)
+            options.put("theme.color", "#06307A")
+            options.put("currency", "INR")
             amountPaid = quantity * product.discountPrice * 100
             options.put(
                 "amount",
-                "${amountPaid}"
+                "$amountPaid"
             )
             options.put(
                 "prefill.email",
                 sharedPreferences.getString(CustomerConstants.CUSTOMER_EMAIL, "")
-            );
+            )
             options.put(
                 "prefill.contact",
                 mobileNumber
-            );
-            checkout.open(this, options);
+            )
+            checkout.open(this, options)
         } catch (e: Exception) {
             Log.d("TAG", "buyProduct: ${e.message}")
         }
@@ -138,16 +133,13 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
             )
         )
 
-
         paymentObserver()
-
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
-        Log.d("TAG", "onPaymentError: ${p1}")
+        Log.d("TAG", "onPaymentError: $p1")
         this.makeToast("Something went wrong")
     }
-
 
     private fun paymentObserver() {
         lifecycle.coroutineScope.launchWhenCreated {
@@ -157,10 +149,13 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
                         binding.paymentKaro.visibility = View.GONE
                     }
                     Status.SUCCESS -> {
-                        Handler(Looper.myLooper()!!).postDelayed({
-                            this@PaymentActivity.makeToast("Payment Successful")
-                            finish()
-                        },2000)
+                        Handler(Looper.myLooper()!!).postDelayed(
+                            {
+                                this@PaymentActivity.makeToast("Payment Successful")
+                                finish()
+                            },
+                            2000
+                        )
                     }
                     Status.ERROR -> {
                         this@PaymentActivity.makeToast("Error Occurred")
@@ -170,13 +165,9 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
         }
     }
 
-
-
-
     private fun generateOrderId(mobileNumber: String, address: String, quantity: Int) {
         amountPaid = quantity * product.discountPrice * 100
         viewModel.getOrderId(amountPaid)
-
 
         lifecycle.coroutineScope.launchWhenCreated {
             viewModel.orderId.collect {
@@ -196,7 +187,5 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
                 }
             }
         }
-
     }
-
 }

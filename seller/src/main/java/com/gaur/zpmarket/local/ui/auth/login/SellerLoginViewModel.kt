@@ -18,8 +18,7 @@ import javax.inject.Inject
 class SellerLoginViewModel @Inject constructor(private val authRepository: AuthRepository) :
     ViewModel() {
 
-    val loginObservables= SellerLoginObservables(email = "",password = "")
-
+    val loginObservables = SellerLoginObservables(email = "", password = "")
 
     private val _login = MutableStateFlow<Events<Result<SellerRegistrationResponseObject>>>(
         Events(
@@ -28,11 +27,8 @@ class SellerLoginViewModel @Inject constructor(private val authRepository: AuthR
     )
     val login: StateFlow<Events<Result<SellerRegistrationResponseObject>>> = _login
 
-
     fun sellerLogin(sellerLoginObject: SellerLoginObject) = viewModelScope.launch {
         _login.value = Events(Result(Status.LOADING, null, null))
         _login.value = Events(authRepository.sellerLogin(sellerLoginObject))
     }
-
-
 }

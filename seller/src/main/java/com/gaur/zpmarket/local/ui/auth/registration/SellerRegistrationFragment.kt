@@ -24,7 +24,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SellerRegistrationFragment : Fragment() {
 
-
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
@@ -34,11 +33,11 @@ class SellerRegistrationFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSellerRegistrationBinding.inflate(inflater, container, false)
@@ -77,11 +76,8 @@ class SellerRegistrationFragment : Fragment() {
                 } else {
                     binding.root.makeSnack(validator)
                 }
-
             }
-
         }
-
     }
 
     private fun viewModelObserve() {
@@ -126,13 +122,11 @@ class SellerRegistrationFragment : Fragment() {
                 SellerConstants.SELLER_NAME,
                 sellerRegistrationResponseObject.seller.name
             ).apply()
-            putString(SellerConstants.SELLER_ID,sellerRegistrationResponseObject.seller._id).apply()
+            putString(SellerConstants.SELLER_ID, sellerRegistrationResponseObject.seller._id).apply()
             putString(SellerConstants.TOKEN, sellerRegistrationResponseObject.token).apply()
-            putString(SellerConstants.SELLER_REFRESH_TOKEN,sellerRegistrationResponseObject.refreshToken).apply()
+            putString(SellerConstants.SELLER_REFRESH_TOKEN, sellerRegistrationResponseObject.refreshToken).apply()
         }.apply()
-        startActivity(Intent(requireContext(),SellerContainerActivity::class.java))
+        startActivity(Intent(requireContext(), SellerContainerActivity::class.java))
         requireActivity().finish()
     }
-
-
 }

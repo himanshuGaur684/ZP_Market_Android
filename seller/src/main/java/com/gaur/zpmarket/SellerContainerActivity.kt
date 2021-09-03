@@ -25,10 +25,9 @@ class SellerContainerActivity : AppCompatActivity() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
-
     private val viewModel: RegistrationViewModel by viewModels()
 
-      val binding: ActivitySellerContainerBinding?=null
+    val binding: ActivitySellerContainerBinding? = null
     lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +36,6 @@ class SellerContainerActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
         val navController = findNavController(R.id.seller_container_view)
         bottomNavigationView.setupWithNavController(navController)
-
-
 
         val token = sharedPreferences.getString(SellerConstants.TOKEN, "").toString()
         if (token.isNotEmpty()) {
@@ -49,9 +46,6 @@ class SellerContainerActivity : AppCompatActivity() {
                 viewModelRefreshTokenObserver()
             }
         }
-
-
-
     }
 
     fun viewModelRefreshTokenObserver() {
@@ -69,19 +63,13 @@ class SellerContainerActivity : AppCompatActivity() {
                             startActivity(Intent(this@SellerContainerActivity, SellerContainerActivity::class.java))
                             finish()
                         }
-
                     }
                     Status.ERROR -> {
                         startActivity(Intent(this@SellerContainerActivity, SellerContainerActivity::class.java))
                         finish()
                     }
-
                 }
             }
         }
-
-
     }
-
-
 }

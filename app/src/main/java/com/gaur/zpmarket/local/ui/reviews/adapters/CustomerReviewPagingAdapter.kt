@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaur.zpmarket.databinding.ViewHolderCustomerReviewsBinding
 import com.gaur.zpmarket.pagination.reviews.review_paging_response.Review
 
-
 class CustomerReviewPagingAdapter :
     PagingDataAdapter<Review, CustomerReviewPagingAdapter.MyViewHolder>(DIFF_UTIL) {
 
     var listener: ((Review) -> Unit)? = null
-
 
     companion object {
         val DIFF_UTIL = object : DiffUtil.ItemCallback<Review>() {
@@ -38,11 +36,8 @@ class CustomerReviewPagingAdapter :
                 getItem(position)?.let {
                     it(it)
                 }
-
             }
         }
-
-
     }
 
     fun itemClickListener(l: (Review) -> Unit) {
@@ -60,8 +55,4 @@ class CustomerReviewPagingAdapter :
         )
         return MyViewHolder(binding)
     }
-
-
 }
-
-

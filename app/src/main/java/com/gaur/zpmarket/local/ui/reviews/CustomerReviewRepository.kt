@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.Flow
 
 class CustomerReviewRepository(private val dataSourcesInterface: DataSourcesInterface) {
 
-
     fun getPagingReviews(productId: String): Flow<PagingData<Review>> {
         return Pager(
             config = PagingConfig(
@@ -29,10 +28,9 @@ class CustomerReviewRepository(private val dataSourcesInterface: DataSourcesInte
                     null,
                     dataSourcesInterface
                 )
-            }).flow
-
+            }
+        ).flow
     }
-
 
     fun getCustomerReviews(customerId: String): Flow<PagingData<Review>> {
         return Pager(
@@ -40,15 +38,16 @@ class CustomerReviewRepository(private val dataSourcesInterface: DataSourcesInte
                 pageSize = 10,
                 enablePlaceholders = false,
                 prefetchDistance = 5
-            ), pagingSourceFactory = {
+            ),
+            pagingSourceFactory = {
                 ReviewPagingSource(
                     null,
                     customerId,
                     dataSourcesInterface
                 )
-            }).flow
+            }
+        ).flow
     }
-
 
     suspend fun getCustomerReviewOnly5(productId: String): Result<PagingReviewResponse> {
         return SafeApiRequest.handleApiCall { dataSourcesInterface.getProductReviewOnly5(productId) }
@@ -72,9 +71,7 @@ class CustomerReviewRepository(private val dataSourcesInterface: DataSourcesInte
         return SafeApiRequest.handleApiCall { dataSourcesInterface.deleteReview(reviewId = reviewId, token = token) }
     }
 
-
     suspend fun updateReviews(review: Review): Result<ServerMessage> {
         return SafeApiRequest.handleApiCall { dataSourcesInterface.updateReview(review) }
     }
-
 }

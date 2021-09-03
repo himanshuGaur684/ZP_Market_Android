@@ -24,12 +24,11 @@ import javax.inject.Singleton
 @Module
 object SellerHiltModules {
 
-
     @Singleton
     @Provides
     fun provideSellerRetrofitInterface(): SellerRetrofitInterface {
 
-        val httpClient = OkHttpClient.Builder().callTimeout(2,TimeUnit.MINUTES).readTimeout(1,TimeUnit.MINUTES).writeTimeout(1,TimeUnit.MINUTES).build()
+        val httpClient = OkHttpClient.Builder().callTimeout(2, TimeUnit.MINUTES).readTimeout(1, TimeUnit.MINUTES).writeTimeout(1, TimeUnit.MINUTES).build()
 
         return Retrofit.Builder().baseUrl(SellerConstants.BASE_URL)
             .client(httpClient)
@@ -43,7 +42,6 @@ object SellerHiltModules {
         return AuthRepositoryImpl(sellerRetrofitInterface)
     }
 
-
     @Provides
     fun provideShowProductsRepository(
         retrofitInterface: SellerRetrofitInterface,
@@ -56,11 +54,9 @@ object SellerHiltModules {
     @Provides
     fun provideAddProductsRepository(
         zpMarketDao: ZPMarketDao,
-        sellerRetrofitInterface: SellerRetrofitInterface
-    ,sharedPreferences: SharedPreferences
+        sellerRetrofitInterface: SellerRetrofitInterface,
+        sharedPreferences: SharedPreferences
     ): AddProductRepository {
-        return AddProductRepository(zpMarketDao, sellerRetrofitInterface,sharedPreferences)
+        return AddProductRepository(zpMarketDao, sellerRetrofitInterface, sharedPreferences)
     }
-
-
 }

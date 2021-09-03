@@ -6,12 +6,10 @@ import com.gaur.zpmarket.remote.DataSourcesInterface
 import com.gaur.zpmarket.remote.response_customer.Product
 import com.gaur.zpmarket.utils.SafeApiRequest
 
-
 private const val STARTING_PAGE_INDEX = 1
 
 class ZPAssurredPagingSource(private val dataSourcesInterface: DataSourcesInterface) :
     PagingSource<Int, Product>() {
-
 
     override fun getRefreshKey(state: PagingState<Int, Product>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -32,7 +30,7 @@ class ZPAssurredPagingSource(private val dataSourcesInterface: DataSourcesInterf
             LoadResult.Page(
                 response.data?.results!!,
                 prevKey = if (position == 0) null else position - 1,
-                nextKey = if (response.data.results.size.toString().toInt()<10) null else position + 1
+                nextKey = if (response.data.results.size.toString().toInt() <10) null else position + 1
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
