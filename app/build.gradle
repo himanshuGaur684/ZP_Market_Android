@@ -94,7 +94,7 @@ dependencies {
 
 
     // fragment testing
-    debugImplementation 'androidx.fragment:fragment-testing:1.4.0-alpha07'
+    debugImplementation 'androidx.fragment:fragment-testing:1.4.0-alpha08'
 
 
 
@@ -116,8 +116,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
 
     // Navigation Components
-    implementation "androidx.navigation:navigation-fragment-ktx:2.4.0-alpha07"
-    implementation "androidx.navigation:navigation-ui-ktx:2.4.0-alpha07"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.0-alpha08"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.0-alpha08"
 
 
     // Glide
