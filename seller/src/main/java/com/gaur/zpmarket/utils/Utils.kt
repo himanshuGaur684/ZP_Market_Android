@@ -13,7 +13,6 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 
-
 // hide and show keyboard
 fun View.hideKeyboard() {
     val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -29,7 +28,7 @@ fun EditText.showKeyBoard() {
     }
 }
 
-//make toast
+// make toast
 fun Context.makeToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
@@ -48,11 +47,9 @@ fun isLocationEnabled(activity: Activity): Boolean {
     )
 }
 
-
 fun String.makeToRequestBody(): RequestBody {
     return this.toRequestBody("text/plain".toMediaTypeOrNull())
 }
-
 
 fun bottomNavigationVisibilityGone(activity: Activity) {
     (activity as SellerContainerActivity).bottomNavigationView.visibility = View.GONE

@@ -2,11 +2,7 @@ package com.gaur.zpmarket
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
-import android.view.WindowInsets
-import android.view.WindowInsetsController
-import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -23,7 +19,6 @@ class SellerActivity : AppCompatActivity() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
-
     private val viewModel: RegistrationViewModel by viewModels()
 
     private var _binding: ActivitySellerBinding? = null
@@ -34,13 +29,9 @@ class SellerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_seller)
 
-
-        if(sharedPreferences.getString(SellerConstants.TOKEN,"").toString().isNotEmpty()){
-            startActivity(Intent(this,SellerContainerActivity::class.java))
+        if (sharedPreferences.getString(SellerConstants.TOKEN, "").toString().isNotEmpty()) {
+            startActivity(Intent(this, SellerContainerActivity::class.java))
             finish()
         }
-
     }
-
-
 }

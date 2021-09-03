@@ -13,7 +13,6 @@ class ShowProductsPagingAdapter :
 
     var listener: ((Product) -> Unit)? = null
 
-
     companion object {
         val DIFF_UTIL = object : DiffUtil.ItemCallback<Product>() {
             override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
@@ -38,7 +37,6 @@ class ShowProductsPagingAdapter :
                 }
             }
         }
-
     }
 
     fun itemClickListener(l: (Product) -> Unit) {
@@ -56,6 +54,4 @@ class ShowProductsPagingAdapter :
         )
         return MyViewHolder(binding)
     }
-
-
 }

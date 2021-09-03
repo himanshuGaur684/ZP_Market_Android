@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaur.zpmarket.remote.response_customer.Product
 import com.gaur.zpmarket.seller.databinding.ViewHolderShowProductsBinding
 
-
 class SearchPagingAdapter :
     PagingDataAdapter<Product, SearchPagingAdapter.MyViewHolder>(DIFF_UTIL) {
 
     var listener: ((Product) -> Unit)? = null
-
 
     companion object {
         val DIFF_UTIL = object : DiffUtil.ItemCallback<Product>() {
@@ -38,7 +36,6 @@ class SearchPagingAdapter :
                 getItem(position)?.let { it1 -> it(it1) }
             }
         }
-
     }
 
     fun itemClickListener(l: (Product) -> Unit) {
@@ -56,6 +53,4 @@ class SearchPagingAdapter :
         )
         return MyViewHolder(binding)
     }
-
-
 }

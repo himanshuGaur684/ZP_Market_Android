@@ -7,13 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaur.zpmarket.databinding.ViewHolderNewestProductBinding
 import com.gaur.zpmarket.remote.response_customer.Product
 
-
 class NewestArrivedAdapter() : RecyclerView.Adapter<NewestArrivedAdapter.MyViewHolder>() {
 
     private var list = listOf<Product>()
 
     private var listener: ((Product) -> Unit)? = null
-
 
     fun setContentList(list: List<Product>) {
         if (this.list.isEmpty()) {
@@ -29,11 +27,9 @@ class NewestArrivedAdapter() : RecyclerView.Adapter<NewestArrivedAdapter.MyViewH
     inner class MyViewHolder(val viewDataBinding: ViewHolderNewestProductBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root)
 
-
     fun itemClickListener(l: (Product) -> Unit) {
         listener = l
     }
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -55,13 +51,11 @@ class NewestArrivedAdapter() : RecyclerView.Adapter<NewestArrivedAdapter.MyViewH
                 it(this.list[position])
             }
         }
-
     }
 
     override fun getItemCount(): Int {
         return this.list.size
     }
-
 
     inner class DiffUtilHomeAdapter(
         private val oldList: List<Product>,
@@ -75,9 +69,7 @@ class NewestArrivedAdapter() : RecyclerView.Adapter<NewestArrivedAdapter.MyViewH
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
             newList[newItemPosition]._id == oldList[oldItemPosition]._id
 
-
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
             newList[newItemPosition] == oldList[oldItemPosition]
     }
-
 }

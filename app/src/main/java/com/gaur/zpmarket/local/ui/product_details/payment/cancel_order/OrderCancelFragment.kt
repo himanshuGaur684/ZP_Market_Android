@@ -8,10 +8,8 @@ import androidx.fragment.app.Fragment
 import com.gaur.zpmarket.databinding.FragmentOrderCancelBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class OrderCancelFragment : Fragment() {
-
 
     private var _binding: FragmentOrderCancelBinding? = null
     val binding: FragmentOrderCancelBinding
@@ -22,7 +20,8 @@ class OrderCancelFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOrderCancelBinding.inflate(inflater, container, false)
@@ -30,8 +29,5 @@ class OrderCancelFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
     }
-
-
 }

@@ -16,10 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class CustomerProfileFragment : Fragment() {
-
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -32,17 +30,16 @@ class CustomerProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCustomerProfileBinding.inflate(inflater, container, false)
         return _binding?.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = sharedPreferences.getString(CustomerConstants.CUSTOMER_ID, "").toString()
@@ -65,8 +62,5 @@ class CustomerProfileFragment : Fragment() {
                 }
             }
         }
-
-
     }
-
 }

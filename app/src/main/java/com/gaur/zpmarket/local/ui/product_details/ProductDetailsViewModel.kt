@@ -19,10 +19,8 @@ class ProductDetailsViewModel @Inject constructor(private val productDetailsRepo
         MutableStateFlow(Events(Result.empty()))
     val product: StateFlow<Events<Result<Product>>> = _product
 
-
-    fun getSingleProduct(id:String)= viewModelScope.launch {
-        _product.value = Events(Result(Status.LOADING,null,null))
+    fun getSingleProduct(id: String) = viewModelScope.launch {
+        _product.value = Events(Result(Status.LOADING, null, null))
         _product.value = Events(productDetailsRepository.getSingleProduct(id))
     }
-
 }

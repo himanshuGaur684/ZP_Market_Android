@@ -10,15 +10,12 @@ import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import com.gaur.zpmarket.databinding.FragmentOrdersBinding
 import com.gaur.zpmarket.local.ui.orders.adapters.OrderPagingAdapter
-import com.gaur.zpmarket.utils.customerBottomNavigationViewVisibilityGone
 import com.gaur.zpmarket.utils.customerBottomNavigationViewVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
-
 @AndroidEntryPoint
 class OrdersFragment : Fragment() {
-
 
     private var _binding: FragmentOrdersBinding? = null
     val binding: FragmentOrdersBinding
@@ -28,9 +25,9 @@ class OrdersFragment : Fragment() {
 
     private val orderPagingAdapter = OrderPagingAdapter()
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOrdersBinding.inflate(inflater, container, false)
@@ -58,7 +55,6 @@ class OrdersFragment : Fragment() {
         }
     }
 
-
     override fun onResume() {
         customerBottomNavigationViewVisibilityVisible(requireActivity())
         super.onResume()
@@ -68,6 +64,4 @@ class OrdersFragment : Fragment() {
         customerBottomNavigationViewVisibilityVisible(requireActivity())
         super.onStart()
     }
-
-
 }

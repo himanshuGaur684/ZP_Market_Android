@@ -11,15 +11,9 @@ import javax.inject.Inject
 class ShowProductViewModel @Inject constructor(private val repository: ShowProductRepositoryImpl) :
     ViewModel() {
 
-
-
-
     val productsStreams = repository.getProductsStream().cachedIn(viewModelScope)
 
-
-
-    fun getAllProductCategory()= viewModelScope.launch {
+    fun getAllProductCategory() = viewModelScope.launch {
         repository.getAllProductCategory()
     }
-
 }

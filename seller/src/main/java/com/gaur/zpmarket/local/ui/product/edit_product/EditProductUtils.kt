@@ -1,6 +1,5 @@
 package com.gaur.zpmarket.local.ui.product.edit_product
 
-
 object EditProductUtils {
     fun validateData(
         name: String,
@@ -31,4 +30,3 @@ object EditProductUtils {
         }
     }
 }
-

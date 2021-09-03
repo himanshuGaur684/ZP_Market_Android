@@ -12,14 +12,12 @@ import com.gaur.zpmarket.local.ui.cart.adapters.CartPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class CartFragment : Fragment() {
 
     private var _binding: FragmentCartBinding? = null
     val binding: FragmentCartBinding
         get() = _binding!!
-
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -30,17 +28,16 @@ class CartFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         return _binding?.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         cartViewModel.postCustomerId(
@@ -56,7 +53,5 @@ class CartFragment : Fragment() {
                 cartPagingAdapter.submitData(lifecycle, it)
             }
         }
-
     }
-
 }

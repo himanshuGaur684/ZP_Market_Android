@@ -8,10 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaur.zpmarket.databinding.ViewHolderOrdersBinding
 import com.gaur.zpmarket.pagination.orders.Order
 
-
 class OrderPagingAdapter() :
     PagingDataAdapter<Order, OrderPagingAdapter.MyViewHolder>(DIFF_UTIL) {
-
 
     private var listener: ((Order) -> Unit)? = null
 
@@ -25,7 +23,6 @@ class OrderPagingAdapter() :
         }
     }
 
-
     inner class MyViewHolder(val viewDataBinding: ViewHolderOrdersBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root)
 
@@ -38,7 +35,6 @@ class OrderPagingAdapter() :
         return MyViewHolder(binding)
     }
 
-
     fun itemClickListener(l: (Order) -> Unit) {
         listener = l
     }
@@ -46,14 +42,10 @@ class OrderPagingAdapter() :
     override fun onBindViewHolder(holder: OrderPagingAdapter.MyViewHolder, position: Int) {
         holder.viewDataBinding.order = getItem(position)
 
-        holder.viewDataBinding.root.setOnClickListener{
+        holder.viewDataBinding.root.setOnClickListener {
             listener?.let {
                 getItem(position)?.let { it1 -> it(it1) }
             }
         }
-
-
     }
-
-
 }

@@ -42,29 +42,31 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        Handler(Looper.myLooper()!!).postDelayed({
-            /** check if customer token is not empty **/
-            if (sharedPreferences.getString(CustomerConstants.CUSTOMER_AUTH_TOKEN, "").toString()
+        Handler(Looper.myLooper()!!).postDelayed(
+            {
+                /** check if customer token is not empty **/
+                if (sharedPreferences.getString(CustomerConstants.CUSTOMER_AUTH_TOKEN, "").toString()
                     .isNotEmpty()
-            ) {
-                startActivity(Intent(this, ContainerActivity::class.java))
-                finish()
-            }
-            /**  Check if seller token is not empty  **/
-            else if (sharedPreferences.getString(SellerConstants.TOKEN, "").toString()
+                ) {
+                    startActivity(Intent(this, ContainerActivity::class.java))
+                    finish()
+                }
+                /**  Check if seller token is not empty  **/
+                else if (sharedPreferences.getString(SellerConstants.TOKEN, "").toString()
                     .isNotEmpty()
-            ) {
-                startActivity(Intent(this, SellerContainerActivity::class.java))
-                finish()
-            }
-            /**  check if customer token is empty then jump onto customerAuthActivity  **/
-            else if (sharedPreferences.getString(CustomerConstants.CUSTOMER_AUTH_TOKEN, "")
+                ) {
+                    startActivity(Intent(this, SellerContainerActivity::class.java))
+                    finish()
+                }
+                /**  check if customer token is empty then jump onto customerAuthActivity  **/
+                else if (sharedPreferences.getString(CustomerConstants.CUSTOMER_AUTH_TOKEN, "")
                     .toString().isEmpty()
-            ) {
-                startActivity(Intent(this, CustomerAuthActivity::class.java))
-                finish()
-            }
-        }, 1200)
-
+                ) {
+                    startActivity(Intent(this, CustomerAuthActivity::class.java))
+                    finish()
+                }
+            },
+            1200
+        )
     }
 }

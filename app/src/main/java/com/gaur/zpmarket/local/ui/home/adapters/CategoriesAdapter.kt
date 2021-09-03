@@ -10,10 +10,10 @@ import com.gaur.zpmarket.remote.response_customer.category.Category
 class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
     private var list = listOf<Category>()
-    private var listener:((Category)->Unit)?=null
+    private var listener: ((Category) -> Unit)? = null
 
     fun setContentList(list: List<Category>) {
-        if(this.list.isEmpty()) {
+        if (this.list.isEmpty()) {
             this.list = list
             notifyDataSetChanged()
             return
@@ -26,7 +26,6 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>
     inner class MyViewHolder(val viewDataBinding: ViewHolderCategoriesBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root)
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -36,25 +35,23 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>
         return MyViewHolder(binding)
     }
 
-    fun itemClickListener(l:(Category)->Unit){
-        listener=l
+    fun itemClickListener(l: (Category) -> Unit) {
+        listener = l
     }
 
     override fun onBindViewHolder(holder: CategoriesAdapter.MyViewHolder, position: Int) {
-       // holder.viewDataBinding.image= this.list[position].imageUrl
-        holder.viewDataBinding.text=this.list[position].name
+        // holder.viewDataBinding.image= this.list[position].imageUrl
+        holder.viewDataBinding.text = this.list[position].name
         holder.viewDataBinding.root.setOnClickListener {
             listener?.let {
                 it(this.list[position])
             }
         }
-
     }
 
     override fun getItemCount(): Int {
         return this.list.size
     }
-
 
     inner class DiffUtilHomeAdapter(
         private val oldList: List<Category>,
@@ -68,9 +65,7 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
             newList[newItemPosition]._id == oldList[oldItemPosition]._id
 
-
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
             newList[newItemPosition] == oldList[oldItemPosition]
     }
-
 }

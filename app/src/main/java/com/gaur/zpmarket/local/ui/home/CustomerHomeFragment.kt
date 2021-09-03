@@ -19,10 +19,8 @@ import com.gaur.zpmarket.utils.makeToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
-
 @AndroidEntryPoint
 class CustomerHomeFragment : Fragment() {
-
 
     private var _binding: FragmentCustomerHomeBinding? = null
     val binding: FragmentCustomerHomeBinding
@@ -41,13 +39,13 @@ class CustomerHomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCustomerHomeBinding.inflate(inflater, container, false)
         return _binding?.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setUpRecyclerView()
@@ -55,8 +53,6 @@ class CustomerHomeFragment : Fragment() {
         binding.searchView.setOnClickListener {
             findNavController().navigate(CustomerHomeFragmentDirections.actionCustomerHomeFragmentToSearchFragment())
         }
-
-
 
         binding.categoriesViewAll.setOnClickListener {
             findNavController().navigate(
@@ -121,14 +117,11 @@ class CustomerHomeFragment : Fragment() {
             }
         }
 
-
-
         lifecycle.coroutineScope.launchWhenCreated {
             viewModel.homeResponse.collect {
 
                 when (it.peekContent().status) {
                     Status.LOADING -> {
-
                     }
                     Status.SUCCESS -> {
                         it.peekContent().data?.let {
@@ -137,7 +130,6 @@ class CustomerHomeFragment : Fragment() {
                             newestAdapter.setContentList(it.result.newestArrived)
                             zpAssuredAdapter.setContentList(it.result.zp_market_assured)
                         }
-
                     }
                     Status.ERROR -> {
                         it.peekContent().message?.let {
@@ -147,7 +139,6 @@ class CustomerHomeFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun setUpRecyclerView() {
@@ -170,6 +161,4 @@ class CustomerHomeFragment : Fragment() {
         customerBottomNavigationViewVisibilityVisible(requireActivity())
         super.onResume()
     }
-
-
 }

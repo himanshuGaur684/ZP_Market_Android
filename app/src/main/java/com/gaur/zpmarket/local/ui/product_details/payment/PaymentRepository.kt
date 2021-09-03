@@ -14,9 +14,7 @@ class PaymentRepository(private val customerRetrofitInterface: CustomerRetrofitI
         return SafeApiRequest.handleApiCall { customerRetrofitInterface.postOrder(order) }
     }
 
-    suspend fun getOrderId(amount:Int):Result<OrderIdResponse>{
+    suspend fun getOrderId(amount: Int): Result<OrderIdResponse> {
         return SafeApiRequest.handleApiCall { customerRetrofitInterface.getOrderId(OrderPrice(amount)) }
     }
-
-
 }

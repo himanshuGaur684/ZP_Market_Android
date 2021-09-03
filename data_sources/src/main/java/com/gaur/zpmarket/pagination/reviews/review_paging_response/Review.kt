@@ -12,4 +12,4 @@ data class Review(
     val date: String,
     val productId: String,
     val rating: Double
-): Parcelable
+) : Parcelable

@@ -16,10 +16,8 @@ import com.gaur.zpmarket.utils.customerBottomNavigationViewVisibilityGone
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
-
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -32,26 +30,23 @@ class SearchFragment : Fragment() {
     val binding: FragmentSearchBinding
         get() = _binding!!
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return _binding?.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.searchProductsEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -59,13 +54,10 @@ class SearchFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-
             }
         })
 
-
         searchViewModelObservable()
-
     }
 
     private fun searchViewModelObservable() {
@@ -74,9 +66,8 @@ class SearchFragment : Fragment() {
         }
 
         searchPagingAdapter.itemClickListener {
-            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToCustomerProductDetailsFragment(productDetails =  it))
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToCustomerProductDetailsFragment(productDetails = it))
         }
-
 
         viewModel.searchList.observe(viewLifecycleOwner) {
             it?.let {
@@ -84,7 +75,6 @@ class SearchFragment : Fragment() {
             }
         }
     }
-
 
     override fun onSaveInstanceState(outState: Bundle) {
         customerBottomNavigationViewVisibilityGone(requireActivity())
@@ -95,5 +85,4 @@ class SearchFragment : Fragment() {
         customerBottomNavigationViewVisibilityGone(requireActivity())
         super.onResume()
     }
-
 }

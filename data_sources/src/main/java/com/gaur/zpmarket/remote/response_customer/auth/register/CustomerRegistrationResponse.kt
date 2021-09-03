@@ -5,5 +5,5 @@ data class CustomerRegistrationResponse(
     val message: String,
     val success: Boolean,
     val token: String,
-    val refreshToken :String
+    val refreshToken: String
 )

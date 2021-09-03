@@ -9,12 +9,9 @@ import com.gaur.zpmarket.utils.Result
 
 interface AuthRepository {
 
-
     suspend fun sellerRegistration(sellerRegistrationObject: SellerRegistrationObject): Result<SellerRegistrationResponseObject>
 
     suspend fun sellerLogin(sellerLoginObject: SellerLoginObject): Result<SellerRegistrationResponseObject>
 
-    suspend fun refreshToken(refreshTokenBody: RefreshTokenBody):Result<RefreshTokenResponse>
-
-
+    suspend fun refreshToken(refreshTokenBody: RefreshTokenBody): Result<RefreshTokenResponse>
 }

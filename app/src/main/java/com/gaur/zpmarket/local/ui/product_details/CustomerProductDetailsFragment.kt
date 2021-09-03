@@ -29,13 +29,11 @@ import kotlinx.coroutines.flow.collect
 import java.util.*
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class CustomerProductDetailsFragment : Fragment() {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
-
 
     private val productDetailsViewModel: ProductDetailsViewModel by viewModels()
 
@@ -43,24 +41,22 @@ class CustomerProductDetailsFragment : Fragment() {
     val binding: FragmentCustomerProductDetailsBinding
         get() = _binding!!
 
-
     private val viewModel: CustomerReviewViewModel by viewModels()
     private val cartViewModel: CartViewModel by viewModels()
 
     private val customerReviewAdapter = CustomerReviewAdapter()
     private val args: CustomerProductDetailsFragmentArgs by navArgs()
 
-
     private val addProductImageAdapter = DetailsProductImageAdapter()
     private val pageSnap = PagerSnapHelper()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCustomerProductDetailsBinding.inflate(inflater, container, false)
@@ -118,7 +114,6 @@ class CustomerProductDetailsFragment : Fragment() {
             /**  Get only 5 reviews  **/
             onlyFiveReview(product)
 
-
             /**  click on buy now product  **/
             buyProduct()
             /** Review list item Click listener **/
@@ -138,7 +133,6 @@ class CustomerProductDetailsFragment : Fragment() {
         }
     }
 
-
     private fun init() {
         if (args.isOrder) {
             binding.buyProductButton.text = "Cancel Order"
@@ -154,7 +148,6 @@ class CustomerProductDetailsFragment : Fragment() {
             } else {
                 requireContext().makeToast("Making just a minute")
             }
-
         }
     }
 
@@ -167,12 +160,12 @@ class CustomerProductDetailsFragment : Fragment() {
                     sharedPreferences.getString(
                         CustomerConstants.CUSTOMER_ID,
                         ""
-                    ).toString(), product._id,
+                    ).toString(),
+                    product._id,
                     Date().toString()
                 )
             )
         }
-
 
         lifecycle.coroutineScope.launchWhenCreated {
             cartViewModel.postCart.collect {
@@ -185,14 +178,12 @@ class CustomerProductDetailsFragment : Fragment() {
                         it.peekContent().data?.let {
                             requireContext().makeToast(it.message)
                         }
-
                     }
                     Status.ERROR -> {
                         binding.customerAddToCartProducts.isEnabled = true
                         it.peekContent().message?.let {
                             if (it.isNotEmpty()) requireContext().makeToast(it)
                         }
-
                     }
                 }
             }
@@ -249,15 +240,12 @@ class CustomerProductDetailsFragment : Fragment() {
                                 }
                                 customerReviewAdapter.setContentList(it.results)
                             }
-
                         }
                     }
                 }
-
             }
         }
     }
-
 
     /** Always update our Product**/
     private fun updateProduct(id: String) {
@@ -272,8 +260,6 @@ class CustomerProductDetailsFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
     override fun onStart() {
@@ -288,6 +274,4 @@ class CustomerProductDetailsFragment : Fragment() {
         }
         super.onResume()
     }
-
-
 }
