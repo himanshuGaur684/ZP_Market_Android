@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (window.insetsController != null) {
                 val insetsController = window.insetsController
