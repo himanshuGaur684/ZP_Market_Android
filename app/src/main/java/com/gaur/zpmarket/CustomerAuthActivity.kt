@@ -11,5 +11,7 @@ class CustomerAuthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_customer_auth)
 
 
+        // new in dev
+
     }
 }
