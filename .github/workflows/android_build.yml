@@ -16,8 +16,8 @@ jobs:
           java-version: 1.8
           
       - name: Run Tasks
-        run: gradlew test
+        run: ./gradlew test
 
       - name: Build Project
-        run: gradlew assemble
-
+        run: ./gradlew assemble
+ 
