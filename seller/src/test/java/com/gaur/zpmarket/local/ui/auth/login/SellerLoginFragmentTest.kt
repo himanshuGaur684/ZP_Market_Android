@@ -1,6 +1,7 @@
 package com.gaur.zpmarket.local.ui.auth.login
 
-import android.support.test.filters.SmallTest
+
+import androidx.test.filters.SmallTest
 import com.gaur.zpmarket.local.ui.auth.AuthUtils
 import org.junit.Assert.assertEquals
 import org.junit.Test
