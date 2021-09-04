@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_200"
-            android:navigationIcon="@drawable/ic_back_whie"
+            android:navigationIcon="@drawable/ic_customer_back_white"
             android:title="Product Details"
             android:titleTextColor="@color/white" />
 

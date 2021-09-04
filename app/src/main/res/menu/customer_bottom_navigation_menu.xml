@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/customerHomeFragment"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_customer_home"
         android:title="Home" />
     <item
         android:id="@+id/ordersFragment"
-        android:icon="@drawable/ic_orders"
+        android:icon="@drawable/ic_customer_orders"
         android:title="Orders" />
     <item
         android:id="@+id/cartFragment"
-        android:icon="@drawable/ic_cart"
+        android:icon="@drawable/ic_customer_cart"
         android:title="Cart" />
     <item
         android:id="@+id/profileFragment"

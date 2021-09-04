@@ -22,7 +22,7 @@
                 android:id="@+id/customer_home_details_toolbar_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back_whie" />
+                android:src="@drawable/ic_customer_back_white" />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Title"

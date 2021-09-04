@@ -81,7 +81,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_assured"
+                        android:src="@drawable/ic_customer_assured"
                         android:layout_marginStart="4dp"
                         app:tint="@color/red" />
 

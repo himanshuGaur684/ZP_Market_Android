@@ -34,7 +34,7 @@
                 android:layout_height="100dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_cart"
+                android:src="@drawable/ic_customer_cart"
                 app:tint="@color/purple_200" />
 
             <TextView
