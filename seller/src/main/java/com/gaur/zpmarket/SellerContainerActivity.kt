@@ -10,7 +10,7 @@ import androidx.lifecycle.coroutineScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.auth0.android.jwt.JWT
-import com.gaur.zpmarket.local.ui.auth.registration.RegistrationViewModel
+import com.gaur.zpmarket.presentation.auth.registration.RegistrationViewModel
 import com.gaur.zpmarket.seller.R
 import com.gaur.zpmarket.seller.databinding.ActivitySellerContainerBinding
 import com.gaur.zpmarket.utils.SellerConstants

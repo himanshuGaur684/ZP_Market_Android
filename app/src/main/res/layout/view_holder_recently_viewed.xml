@@ -24,7 +24,6 @@
         <RelativeLayout
             android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:background="@drawable/drawable_surface_color"
             android:padding="8dp">
 
             <com.makeramen.roundedimageview.RoundedImageView

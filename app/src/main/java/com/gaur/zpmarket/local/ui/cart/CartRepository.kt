@@ -9,8 +9,8 @@ import com.gaur.zpmarket.pagination.cart.CartPagingSource
 import com.gaur.zpmarket.pagination.cart.cart_paging_response.Cart
 import com.gaur.zpmarket.remote.CustomerRetrofitInterface
 import com.gaur.zpmarket.remote.DataSourcesInterface
-import com.gaur.zpmarket.remote.response_customer.cart.CartPostBody
-import com.gaur.zpmarket.remote.response_seller.ServerMessage
+import com.gaur.zpmarket.remote.response_customer.cart.CartPostDTO
+import com.gaur.zpmarket.remote.response_seller.ServerMessageDTO
 import com.gaur.zpmarket.utils.CustomerConstants
 import com.gaur.zpmarket.utils.Result
 import com.gaur.zpmarket.utils.SafeApiRequest
@@ -21,7 +21,7 @@ class CartRepository(
     private val sharedPreferences: SharedPreferences
 ) {
 
-    suspend fun postCart(postBody: CartPostBody): Result<ServerMessage> {
+    suspend fun postCart(postBody: CartPostDTO): Result<ServerMessageDTO> {
         return SafeApiRequest.handleApiCall { customerRetrofitInterface.postCart(postBody) }
     }
 

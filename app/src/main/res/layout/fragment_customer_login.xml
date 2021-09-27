@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.gaur.zpmarket.local.ui.auth.CustomerAuthViewModel" />
+            type="com.gaur.zpmarket.presentation.auth.CustomerAuthViewModel" />
 
     </data>
 
@@ -16,9 +16,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="12dp"
-        tools:context=".local.ui.auth.login.CustomerLoginFragment">
-
-
+        android:background="@color/purple_700"
+        tools:context="com.gaur.zpmarket.presentation.auth.login.CustomerLoginFragment">
 
 
         <TextView
@@ -157,6 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="32dp"
+            android:backgroundTint="@color/red"
             android:text="Login as Seller"
             android:textAllCaps="false" />
 

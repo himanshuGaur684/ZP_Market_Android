@@ -14,136 +14,143 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="@color/purple_700"
         android:layout_height="wrap_content">
 
 
-        <com.google.android.material.card.MaterialCardView
+        <RelativeLayout
+            android:id="@+id/rl1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            app:cardElevation="4dp">
+            android:background="@color/purple_700"
+            android:padding="8dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="140dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="fitXY"
+                    android:src="@color/black"
+                    app:loadImages="@{product.imageUrl[0]}"
+                    app:riv_corner_radius="4dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="4dp">
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:layout_width="140dp"
-                        android:layout_height="160dp"
-                        android:layout_gravity="center_vertical"
-                        android:scaleType="fitXY"
-                        android:src="@color/black"
-                        app:loadImages="@{product.imageUrl[0]}"
-                        app:riv_corner_radius="4dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:maxLines="2"
+                        android:text="@{product.name}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="Product name is very good mere bhai" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:maxLines="3"
+                        android:text="@{product.description}"
+                        tools:text="What a description of the product i mean its amazing " />
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="8dp">
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/roboto_regular"
-                            android:maxLines="2"
-                            android:text="@{product.name}"
+                            android:text="@{`\u20B9`+ String.valueOf(product.discountPrice)}"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
                             android:textStyle="bold"
-                            tools:text="Product name is very good mere bhai" />
+                            tools:text="\u20B9 10,000" />
+
+
+                        <TextView
+                            android:id="@+id/cart_list_item_market_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{`\u20B9`+String.valueOf(product.marketPrice)}"
+                            android:textColor="@color/red"
+                            android:textSize="12sp"
+                            tools:text="\u20B9 12,000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/roboto_regular"
-                            android:maxLines="3"
-                            android:text="@{product.description}"
-                            tools:text="What a description of the product i mean its amazing " />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{`\u20B9`+ String.valueOf(product.discountPrice)}"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"
-                                tools:text="\u20B9 10,000" />
-
-
-                            <TextView
-                                android:id="@+id/cart_list_item_market_price"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@{`\u20B9`+String.valueOf(product.marketPrice)}"
-                                android:textColor="@color/red"
-                                android:textSize="12sp"
-                                tools:text="\u20B9 12,000" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:text="@{product.discount+`% off`}"
-                                android:textColor="@color/orange"
-                                android:textSize="12sp"
-                                tools:text="20% off" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:orientation="horizontal"
-                            android:visibility="@{product.reviews==0?View.GONE:View.VISIBLE}">
-
-                            <RatingBar
-                                style="@style/Widget.AppCompat.RatingBar.Small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:progressTint="@color/green"
-                                android:rating="@{Float.valueOf(String.valueOf(product.rating))}"
-                                tools:rating="3.4" />
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:text="@{String.valueOf(product.reviews)+` reviews`}"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"
-                                tools:text="4 reviews" />
-                        </LinearLayout>
-
+                            android:layout_marginStart="16dp"
+                            android:text="@{product.discount+`% off`}"
+                            android:textColor="@color/orange"
+                            android:textSize="12sp"
+                            tools:text="20% off" />
 
                     </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{product.reviews==0?View.GONE:View.VISIBLE}">
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:progressTint="@color/green"
+                            android:rating="@{Float.valueOf(String.valueOf(product.rating))}"
+                            tools:rating="3.4" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@{String.valueOf(product.reviews)+` reviews`}"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            tools:text="4 reviews" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
+            </LinearLayout>
 
 
-            </RelativeLayout>
+        </RelativeLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_below="@+id/rl1"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="0.1dp"
+            android:background="@color/grey_font" />
 
 
     </RelativeLayout>

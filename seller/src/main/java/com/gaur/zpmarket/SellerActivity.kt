@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.gaur.zpmarket.local.ui.auth.registration.RegistrationViewModel
+import com.gaur.zpmarket.presentation.auth.registration.RegistrationViewModel
 import com.gaur.zpmarket.seller.R
 import com.gaur.zpmarket.seller.databinding.ActivitySellerBinding
 import com.gaur.zpmarket.utils.SellerConstants

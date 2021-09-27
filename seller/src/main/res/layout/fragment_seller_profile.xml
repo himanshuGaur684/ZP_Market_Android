@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gaur.zpmarket.local.ui.profile.SellerProfileFragment">
+    tools:context="com.gaur.zpmarket.presentation.profile.SellerProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

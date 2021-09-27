@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import com.gaur.zpmarket.local.room.ZPMarketDao
 import com.gaur.zpmarket.remote.SellerRetrofitInterface
 import com.gaur.zpmarket.remote.response_customer.category.Category
-import com.gaur.zpmarket.remote.response_seller.ServerMessage
+import com.gaur.zpmarket.remote.response_seller.ServerMessageDTO
 import com.gaur.zpmarket.remote.response_seller.products.EditProduct
 import com.gaur.zpmarket.remote.response_seller.products.SingleProductResponse
 import com.gaur.zpmarket.utils.Result
@@ -32,7 +32,7 @@ class AddProductRepository(
         productFeatures: RequestBody,
         productPackaging: RequestBody,
         requestBodyCOD: Boolean
-    ): Result<ServerMessage> {
+    ): Result<ServerMessageDTO> {
         return SafeApiRequest.handleApiCall {
             sellerRetrofitInterface.postProducts(
                 token = sharedPreferences.getString(SellerConstants.TOKEN, "").toString(),
@@ -65,7 +65,7 @@ class AddProductRepository(
         packagingDetails: String,
         cashOnDelivery: Boolean
 
-    ): Result<ServerMessage> {
+    ): Result<ServerMessageDTO> {
         return SafeApiRequest.handleApiCall {
             sellerRetrofitInterface.editProducts(
                 token = sharedPreferences.getString(SellerConstants.TOKEN, "").toString(),
@@ -86,7 +86,7 @@ class AddProductRepository(
         }
     }
 
-    suspend fun deleteProduct(id: String): Result<ServerMessage> {
+    suspend fun deleteProduct(id: String): Result<ServerMessageDTO> {
         return SafeApiRequest.handleApiCall {
             sellerRetrofitInterface.deleteProduct(
                 id = id,

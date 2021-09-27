@@ -2,10 +2,10 @@ package com.gaur.zpmarket.hilt
 
 import android.content.SharedPreferences
 import com.gaur.zpmarket.local.room.ZPMarketDao
-import com.gaur.zpmarket.local.ui.auth.AuthRepository
-import com.gaur.zpmarket.local.ui.auth.AuthRepositoryImpl
 import com.gaur.zpmarket.local.ui.product.add.AddProductRepository
 import com.gaur.zpmarket.local.ui.product.show_product.ShowProductRepositoryImpl
+import com.gaur.zpmarket.presentation.auth.AuthRepository
+import com.gaur.zpmarket.presentation.auth.AuthRepositoryImpl
 import com.gaur.zpmarket.remote.DataSourcesInterface
 import com.gaur.zpmarket.remote.SellerRetrofitInterface
 import com.gaur.zpmarket.utils.SellerConstants

@@ -7,7 +7,7 @@
 
         <variable
             name="homeResponse"
-            type="com.gaur.zpmarket.remote.response_customer.home.HomeResponse" />
+            type="com.gaur.zpmarket.remote.response_customer.home.CustomerHomeDTO" />
 
         <import type="android.view.View" />
     </data>
@@ -16,18 +16,19 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/purple_700"
         tools:context=".local.ui.CustomerHomeFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/main_fragment_appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_500">
+            android:background="@color/purple_700">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/purple_500"
+                android:background="@color/purple_700"
                 android:fitsSystemWindows="true"
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
@@ -40,7 +41,7 @@
                     android:layout_marginStart="12dp"
                     android:fontFamily="@font/palanquin_dark_bold"
                     android:text="ZP Market"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="24sp" />
 
 
@@ -49,8 +50,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:background="@android:color/transparent"
-                    app:layout_collapseMode="pin"
-                    app:titleTextColor="@color/white">
+                    android:titleTextColor="@color/red"
+                    app:layout_collapseMode="pin">
 
 
                 </androidx.appcompat.widget.Toolbar>
@@ -137,7 +138,7 @@
                         android:maxLines="1"
                         android:text="Categories"
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/categories_view_all"
@@ -159,9 +160,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/view_holder_categories" />
 
                 <!--           Newest Products-->
@@ -179,7 +179,7 @@
                         android:fontFamily="@font/palanquin_dark_bold"
                         android:text="Newest Products"
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/newest_view_all"
@@ -212,8 +212,6 @@
                     android:orientation="horizontal">
 
                     <TextView
-
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
@@ -221,7 +219,7 @@
                         android:fontFamily="@font/palanquin_dark_bold"
                         android:text="ZP Assured"
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/zp_assured_view_all"
@@ -258,7 +256,7 @@
                     android:fontFamily="@font/palanquin_dark_bold"
                     android:text="Recently Viewed"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
 
                 <androidx.recyclerview.widget.RecyclerView

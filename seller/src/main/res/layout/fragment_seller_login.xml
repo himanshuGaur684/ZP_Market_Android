@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.gaur.zpmarket.local.ui.auth.login.SellerLoginViewModel" />
+            type="com.gaur.zpmarket.presentation.auth.login.SellerLoginViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="12dp"
-        tools:context="com.gaur.zpmarket.local.ui.auth.login.SellerLoginFragment">
+        tools:context="com.gaur.zpmarket.presentation.auth.login.SellerLoginFragment">
 
 
         <TextView

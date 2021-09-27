@@ -4,100 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="review"
             type="com.gaur.zpmarket.pagination.reviews.review_paging_response.Review" />
     </data>
 
 
-    <com.google.android.material.card.MaterialCardView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        app:cardElevation="2dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/purple_700">
 
-       >
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/ll1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:orientation="horizontal"
+
+            android:padding="12dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@color/black"
+                app:riv_corner_radius="30dp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:orientation="horizontal">
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@color/black"
-                    app:riv_corner_radius="30dp" />
-
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="4dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="4dp"
-                    android:orientation="vertical">
+                    android:layout_marginTop="4dp"
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="@{review.customer.name}"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            tools:text="Personal Name" />
-
-
-                        <RatingBar
-                            style="@style/Widget.AppCompat.RatingBar.Small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="8dp"
-                            android:numStars="5"
-                            android:progressTint="@color/green"
-                            android:rating="@{Float.valueOf(String.valueOf(review.rating))}"
-                            tools:rating="3.4" />
-
-                    </LinearLayout>
-
+                    android:orientation="horizontal">
 
                     <TextView
-                        style="@style/TextAppearance.AppCompat.Caption"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="@{review.comment}"
-                        android:textColor="@color/grey_font"
-                        android:textSize="14sp"
-                        tools:text="This is fajsfklasjfklfajkdlfjajfaklsjfkla good product and i am very honest with it." />
+                        android:text="@{review.customer.name}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="Personal Name" />
+
+
+                    <RatingBar
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:numStars="5"
+                        android:progressTint="@color/green"
+                        android:rating="@{Float.valueOf(String.valueOf(review.rating))}"
+                        tools:rating="3.4" />
 
                 </LinearLayout>
 
 
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{review.comment}"
+                    android:textColor="@color/grey_font"
+                    android:textSize="14sp"
+                    tools:text="This is fajsfklasjfklfajkdlfjajfaklsjfkla good product and i am very honest with it." />
+
             </LinearLayout>
-        </RelativeLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_below="@+id/ll1"
+            android:layout_marginBottom="0.1dp"
+            android:background="@color/grey_font" />
+    </RelativeLayout>
 
 
 </layout>

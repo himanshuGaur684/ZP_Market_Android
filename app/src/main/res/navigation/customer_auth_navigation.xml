@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/customerLoginFragment"
-        android:name="com.gaur.zpmarket.local.ui.auth.login.CustomerLoginFragment"
+        android:name="com.gaur.zpmarket.presentation.auth.login.CustomerLoginFragment"
         android:label="CustomerLoginFragment" >
         <action
             android:id="@+id/action_customerLoginFragment_to_customerRegistrationFragment"
@@ -18,6 +18,6 @@
     </fragment>
     <fragment
         android:id="@+id/customerRegistrationFragment"
-        android:name="com.gaur.zpmarket.local.ui.auth.register.CustomerRegistrationFragment"
+        android:name="com.gaur.zpmarket.presentation.auth.register.CustomerRegistrationFragment"
         android:label="CustomerRegistrationFragment" />
 </navigation>

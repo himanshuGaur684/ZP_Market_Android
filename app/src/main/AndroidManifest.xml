@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".local.ui.product_details.payment.PaymentActivity" />
+        <activity android:name="com.gaur.zpmarket.presentation.payment.PaymentActivity" />
 
 
         <meta-data

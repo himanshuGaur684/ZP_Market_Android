@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_seller_order" />
     <fragment
         android:id="@+id/sellerProfileFragment"
-        android:name="com.gaur.zpmarket.local.ui.profile.SellerProfileFragment"
+        android:name="com.gaur.zpmarket.presentation.profile.SellerProfileFragment"
         android:label="fragment_seller_profile"
         tools:layout="@layout/fragment_seller_profile" />
     <fragment

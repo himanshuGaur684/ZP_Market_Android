@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/customerReviewFragment"
+            android:icon="@drawable/drawer_review"
+            android:title="Your Reviews" />
 
-    <item
-        android:id="@+id/customerReviewFragment"
-        android:icon="@drawable/drawer_review"
-        android:title="Your Reviews" />
-    <item
-        android:icon="@drawable/drawer_orders"
-        android:title="Your Orders" />
+    </group>
 
-    <group android:id="@+id/terms">
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+
+        <item
+            android:icon="@drawable/drawer_orders"
+            android:title="Your Orders" />
+
+    </group>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
         <item
             android:icon="@drawable/privacy_and_policy_drawer"
-
             android:title="Privacy Policy" />
+    </group>
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
         <item
             android:icon="@drawable/terms_and_conditions"
             android:title="Terms and Condition" />
+
     </group>
 
-
-    <item android:title="Your Reviews" />
 </menu>

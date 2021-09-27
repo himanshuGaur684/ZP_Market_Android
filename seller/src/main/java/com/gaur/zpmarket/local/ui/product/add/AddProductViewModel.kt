@@ -3,7 +3,7 @@ package com.gaur.zpmarket.local.ui.product.add
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gaur.zpmarket.remote.response_seller.ServerMessage
+import com.gaur.zpmarket.remote.response_seller.ServerMessageDTO
 import com.gaur.zpmarket.remote.response_seller.products.SingleProductResponse
 import com.gaur.zpmarket.utils.Events
 import com.gaur.zpmarket.utils.Result
@@ -23,15 +23,15 @@ class AddProductViewModel @Inject constructor(private val repository: AddProduct
     val addObservables = AddProductObservables("", "", "", "", "", "", "", false)
 
     private val _postProduct =
-        MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
-    val postProduct: StateFlow<Events<Result<ServerMessage>>> = _postProduct
+        MutableStateFlow<Events<Result<ServerMessageDTO>>>(Events(Result.empty()))
+    val postProduct: StateFlow<Events<Result<ServerMessageDTO>>> = _postProduct
 
     private val _product =
         MutableStateFlow<Events<Result<SingleProductResponse>>>(Events(Result.empty()))
     val product: StateFlow<Events<Result<SingleProductResponse>>> = _product
 
-    private val _delete = MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
-    val delete: StateFlow<Events<Result<ServerMessage>>> = _delete
+    private val _delete = MutableStateFlow<Events<Result<ServerMessageDTO>>>(Events(Result.empty()))
+    val delete: StateFlow<Events<Result<ServerMessageDTO>>> = _delete
 
     var categoryList = HashMap<String, String>()
 

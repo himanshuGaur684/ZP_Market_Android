@@ -16,10 +16,10 @@ import com.gaur.zpmarket.databinding.FragmentCustomerProductDetailsBinding
 import com.gaur.zpmarket.local.ui.cart.CartViewModel
 import com.gaur.zpmarket.local.ui.product.details_products.DetailsProductImageAdapter
 import com.gaur.zpmarket.local.ui.product_details.adapters.CustomerReviewAdapter
-import com.gaur.zpmarket.local.ui.product_details.payment.PaymentActivity
 import com.gaur.zpmarket.local.ui.reviews.CustomerReviewViewModel
+import com.gaur.zpmarket.presentation.payment.PaymentActivity
 import com.gaur.zpmarket.remote.response_customer.Product
-import com.gaur.zpmarket.remote.response_customer.cart.CartPostBody
+import com.gaur.zpmarket.remote.response_customer.cart.CartPostDTO
 import com.gaur.zpmarket.utils.CustomerConstants
 import com.gaur.zpmarket.utils.Status
 import com.gaur.zpmarket.utils.customerBottomNavigationViewVisibilityGone
@@ -49,10 +49,6 @@ class CustomerProductDetailsFragment : Fragment() {
 
     private val addProductImageAdapter = DetailsProductImageAdapter()
     private val pageSnap = PagerSnapHelper()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -156,7 +152,7 @@ class CustomerProductDetailsFragment : Fragment() {
 
         binding.customerAddToCartProducts.setOnClickListener {
             cartViewModel.postCart(
-                CartPostBody(
+                CartPostDTO(
                     sharedPreferences.getString(
                         CustomerConstants.CUSTOMER_ID,
                         ""

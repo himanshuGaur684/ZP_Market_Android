@@ -10,18 +10,19 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".local.ui.search.SearchFragment">
+        android:background="@color/purple_700"
+        tools:context=".presentation.search.SearchFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/main_fragment_appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_500">
+            android:background="@color/purple_700">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/purple_500"
+                android:background="@color/purple_700"
                 android:fitsSystemWindows="true"
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
@@ -38,7 +39,6 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
                 android:background="@color/white"
-
                 app:cardCornerRadius="8dp">
 
                 <RelativeLayout
@@ -81,6 +81,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_recycler_view"
             android:layout_width="match_parent"
+            android:background="@color/purple_700"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"

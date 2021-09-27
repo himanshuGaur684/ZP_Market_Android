@@ -10,5 +10,6 @@ import kotlinx.android.parcel.Parcelize
 data class Category(
     @PrimaryKey(autoGenerate = false)
     val _id: String,
-    val name: String
+    val name: String,
+    var image: String = ""
 ) : Parcelable

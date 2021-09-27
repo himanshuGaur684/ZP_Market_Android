@@ -17,10 +17,10 @@
             android:id="@+id/add_review_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orange"
-            app:navigationIcon="@drawable/ic_back_whie"
+            android:background="@color/purple_700"
+            app:navigationIcon="@drawable/ic_back_white"
             app:title="Add Reviews"
-            app:titleTextColor="@color/white">
+            app:titleTextColor="@color/black">
 
             <ImageView
                 android:id="@+id/delete_review"
@@ -28,7 +28,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:padding="12dp"
-                android:src="@drawable/ic_delete" />
+                android:src="@drawable/ic_delete"
+                app:tint="@color/black" />
 
 
         </androidx.appcompat.widget.Toolbar>
@@ -38,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/add_review_toolbar"
+            android:background="@color/purple_700"
             android:orientation="vertical"
             android:padding="12dp">
 
@@ -47,6 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:progressTint="@color/red"
                 android:numStars="5" />
 
 
@@ -63,9 +66,7 @@
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start"
                     android:hint="Write your Review"
-                    android:minHeight="200dp"
-
-                    />
+                    android:minHeight="200dp" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +90,9 @@
                     android:fontFamily="@font/roboto_regular"
                     android:text="Submit"
                     android:textAllCaps="false"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/red"
+                    app:cornerRadius="12dp" />
 
             </RelativeLayout>
 

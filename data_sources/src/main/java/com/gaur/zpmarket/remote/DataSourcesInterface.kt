@@ -7,16 +7,16 @@ import com.gaur.zpmarket.pagination.reviews.review_paging_response.PagingReviewR
 import com.gaur.zpmarket.pagination.reviews.review_paging_response.Review
 import com.gaur.zpmarket.pagination.zp_assured.ZpAssuredPagingResponse
 import com.gaur.zpmarket.remote.response_customer.Product
-import com.gaur.zpmarket.remote.response_customer.category.CategoryResponse
+import com.gaur.zpmarket.remote.response_customer.category.CategoryDTO
 import com.gaur.zpmarket.remote.response_customer.reviews.add_review.AddReviewPostBody
-import com.gaur.zpmarket.remote.response_seller.ServerMessage
+import com.gaur.zpmarket.remote.response_seller.ServerMessageDTO
 import retrofit2.Response
 import retrofit2.http.*
 
 interface DataSourcesInterface {
 
     @GET("/products/category")
-    suspend fun getAllCategory(): Response<CategoryResponse>
+    suspend fun getAllCategory(): Response<CategoryDTO>
 
     @GET("products/zp_assured")
     suspend fun getZPAssuredLists(
@@ -59,7 +59,7 @@ interface DataSourcesInterface {
         @Header("Authorization") token: String,
         @Path("productId") productId: String,
         @Body addReviewPostBody: AddReviewPostBody
-    ): Response<ServerMessage>
+    ): Response<ServerMessageDTO>
 
     @GET("product/review/customer/{customerId}")
     suspend fun getCustomerReviews(
@@ -79,8 +79,8 @@ interface DataSourcesInterface {
     suspend fun deleteReview(
         @Header("Authorization") token: String,
         @Path("reviewId") reviewId: String
-    ): Response<ServerMessage>
+    ): Response<ServerMessageDTO>
 
     @PUT("product/review/{id}")
-    suspend fun updateReview(@Body review: Review): Response<ServerMessage>
+    suspend fun updateReview(@Body review: Review): Response<ServerMessageDTO>
 }

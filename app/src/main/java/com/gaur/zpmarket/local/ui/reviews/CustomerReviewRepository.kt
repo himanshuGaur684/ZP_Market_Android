@@ -8,7 +8,7 @@ import com.gaur.zpmarket.pagination.reviews.review_paging_response.PagingReviewR
 import com.gaur.zpmarket.pagination.reviews.review_paging_response.Review
 import com.gaur.zpmarket.remote.DataSourcesInterface
 import com.gaur.zpmarket.remote.response_customer.reviews.add_review.AddReviewPostBody
-import com.gaur.zpmarket.remote.response_seller.ServerMessage
+import com.gaur.zpmarket.remote.response_seller.ServerMessageDTO
 import com.gaur.zpmarket.utils.Result
 import com.gaur.zpmarket.utils.SafeApiRequest
 import kotlinx.coroutines.flow.Flow
@@ -57,7 +57,7 @@ class CustomerReviewRepository(private val dataSourcesInterface: DataSourcesInte
         token: String,
         productId: String,
         addReviewPostBody: AddReviewPostBody
-    ): Result<ServerMessage> {
+    ): Result<ServerMessageDTO> {
         return SafeApiRequest.handleApiCall {
             dataSourcesInterface.postProductReview(
                 token,
@@ -67,11 +67,16 @@ class CustomerReviewRepository(private val dataSourcesInterface: DataSourcesInte
         }
     }
 
-    suspend fun deleteReview(token: String, reviewId: String): Result<ServerMessage> {
-        return SafeApiRequest.handleApiCall { dataSourcesInterface.deleteReview(reviewId = reviewId, token = token) }
+    suspend fun deleteReview(token: String, reviewId: String): Result<ServerMessageDTO> {
+        return SafeApiRequest.handleApiCall {
+            dataSourcesInterface.deleteReview(
+                reviewId = reviewId,
+                token = token
+            )
+        }
     }
 
-    suspend fun updateReviews(review: Review): Result<ServerMessage> {
+    suspend fun updateReviews(review: Review): Result<ServerMessageDTO> {
         return SafeApiRequest.handleApiCall { dataSourcesInterface.updateReview(review) }
     }
 }

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/customerHomeFragment"
-        android:name="com.gaur.zpmarket.local.ui.home.CustomerHomeFragment"
+        android:name="com.gaur.zpmarket.presentation.home.CustomerHomeFragment"
         android:label="CustomerHomeFragment" >
         <action
             android:id="@+id/action_customerHomeFragment_to_customerHomeDetailsFragment"
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/customerHomeDetailsFragment"
-        android:name="com.gaur.zpmarket.local.ui.home_details.CustomerHomeDetailsFragment"
+        android:name="com.gaur.zpmarket.presentation.home_details.CustomerHomeDetailsFragment"
         android:label="CustomerHomeDetailsFragment" >
         <argument
             android:name="categories"
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.gaur.zpmarket.local.ui.profile.CustomerProfileFragment"
+        android:name="com.gaur.zpmarket.presentation.profile.CustomerProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_customer_profile" />
     <fragment
@@ -149,7 +149,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.gaur.zpmarket.local.ui.search.SearchFragment"
+        android:name="com.gaur.zpmarket.presentation.search.SearchFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchFragment_to_customerProductDetailsFragment"

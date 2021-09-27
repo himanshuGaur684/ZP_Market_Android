@@ -16,19 +16,20 @@
 
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
         android:layout_height="120dp"
-        android:gravity="center_horizontal"
+        android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="4dp">
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
-            android:scaleType="fitXY"
-            android:src="@color/orange"
+            android:scaleType="center"
+            android:src="@color/purple_700"
+            app:tint="@color/red"
             app:loadImages="@{image}"
             app:riv_corner_radius="8dp" />
 
@@ -37,16 +38,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:layout_margin="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/roboto_regular"
             android:maxLines="2"
             android:text="@{text}"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             tools:text="Mobile and Components" />
 
-    </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

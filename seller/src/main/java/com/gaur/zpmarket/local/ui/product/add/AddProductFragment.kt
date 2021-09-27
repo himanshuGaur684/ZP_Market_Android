@@ -68,10 +68,6 @@ class AddProductFragment : Fragment() {
             }
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -139,11 +135,11 @@ class AddProductFragment : Fragment() {
             if (imageList.size != 4) {
                 ImagePicker.with(requireActivity())
                     .compress(500)
-                    .crop() // Final image size will be less than 1 MB(Optional)
+                    .crop()
                     .maxResultSize(
                         1080,
                         1080
-                    ) // Final image resolution will be less than 1080 x 1080(Optional)
+                    )
                     .createIntent {
                         startForProfileImageResult.launch(it)
                     }
@@ -207,7 +203,10 @@ class AddProductFragment : Fragment() {
                 discountPrice,
                 marketPrice,
                 sellerId,
-                productDetails, productFeatures, productPackaging, viewModel.addObservables.cashOnDelivery
+                productDetails,
+                productFeatures,
+                productPackaging,
+                viewModel.addObservables.cashOnDelivery
             )
         }
     }
@@ -243,4 +242,5 @@ class AddProductFragment : Fragment() {
             }
         }
     }
+
 }

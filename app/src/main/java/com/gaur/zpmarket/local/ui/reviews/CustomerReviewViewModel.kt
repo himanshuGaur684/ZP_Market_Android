@@ -5,7 +5,7 @@ import androidx.paging.cachedIn
 import com.gaur.zpmarket.pagination.reviews.review_paging_response.PagingReviewResponse
 import com.gaur.zpmarket.pagination.reviews.review_paging_response.Review
 import com.gaur.zpmarket.remote.response_customer.reviews.add_review.AddReviewPostBody
-import com.gaur.zpmarket.remote.response_seller.ServerMessage
+import com.gaur.zpmarket.remote.response_seller.ServerMessageDTO
 import com.gaur.zpmarket.utils.Events
 import com.gaur.zpmarket.utils.Result
 import com.gaur.zpmarket.utils.Status
@@ -39,15 +39,16 @@ class CustomerReviewViewModel @Inject constructor(private val customerReviewRepo
     val reviewListOnly5: StateFlow<Events<Result<PagingReviewResponse>>> = _reviewListOnly5
 
     private val _postReview =
-        MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
-    val postReview: StateFlow<Events<Result<ServerMessage>>> = _postReview
+        MutableStateFlow<Events<Result<ServerMessageDTO>>>(Events(Result.empty()))
+    val postReview: StateFlow<Events<Result<ServerMessageDTO>>> = _postReview
 
     private val _deleteReview =
-        MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
-    val deleteReview: StateFlow<Events<Result<ServerMessage>>> = _deleteReview
+        MutableStateFlow<Events<Result<ServerMessageDTO>>>(Events(Result.empty()))
+    val deleteReview: StateFlow<Events<Result<ServerMessageDTO>>> = _deleteReview
 
-    private val _updateReview = MutableStateFlow<Events<Result<ServerMessage>>>(Events(Result.empty()))
-    val updateReview: StateFlow<Events<Result<ServerMessage>>> = _updateReview
+    private val _updateReview =
+        MutableStateFlow<Events<Result<ServerMessageDTO>>>(Events(Result.empty()))
+    val updateReview: StateFlow<Events<Result<ServerMessageDTO>>> = _updateReview
 
     fun getReviewOnly5(productId: String) = viewModelScope.launch {
         _reviewListOnly5.value = Events(Result(Status.LOADING, null, null))

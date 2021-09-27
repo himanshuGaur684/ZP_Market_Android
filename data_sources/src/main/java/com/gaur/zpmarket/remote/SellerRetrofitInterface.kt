@@ -1,6 +1,6 @@
 package com.gaur.zpmarket.remote
 
-import com.gaur.zpmarket.remote.response_seller.ServerMessage
+import com.gaur.zpmarket.remote.response_seller.ServerMessageDTO
 import com.gaur.zpmarket.remote.response_seller.login.SellerLoginObject
 import com.gaur.zpmarket.remote.response_seller.products.EditProduct
 import com.gaur.zpmarket.remote.response_seller.products.SellerProductResponse
@@ -57,7 +57,7 @@ interface SellerRetrofitInterface {
         @Part("productFeatures") productFeatures: RequestBody,
         @Part("packagingDetails") productPackaging: RequestBody,
         @Part("cashOnDelivery") requestBodyCOD: Boolean
-    ): Response<ServerMessage>
+    ): Response<ServerMessageDTO>
 
     @GET("ecom/seller/products/{id}")
     suspend fun getSingleProduct(@Path("id") id: String): Response<SingleProductResponse>
@@ -67,11 +67,11 @@ interface SellerRetrofitInterface {
         @Header("Authorization") token: String,
         @Path("id") id: String,
         @Body req: EditProduct
-    ): Response<ServerMessage>
+    ): Response<ServerMessageDTO>
 
     @DELETE("ecom/seller/products/{id}")
     suspend fun deleteProduct(
         @Path("id") id: String,
         @Header("Authorization") token: String
-    ): Response<ServerMessage>
+    ): Response<ServerMessageDTO>
 }

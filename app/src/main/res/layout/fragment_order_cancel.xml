@@ -10,12 +10,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".local.ui.product_details.payment.cancel_order.OrderCancelFragment">
+        tools:context=".presentation.payment.cancel_order.OrderCancelFragment">
 
         <Toolbar
             android:id="@+id/cancel_order_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/purple_700"
+            android:backgroundTint="@color/purple_700"
             android:navigationIcon="@drawable/ic_back_white"
             android:title="Cancel Order"
             android:titleTextColor="@color/black" />
@@ -25,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/cancel_order_toolbar"
+            android:background="@color/purple_700"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
@@ -46,7 +49,7 @@
                 android:fontFamily="@font/palanquin_dark_bold"
                 android:text="@string/cancel_request_title"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
 
@@ -81,7 +84,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="Proceed"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:backgroundTint="@color/red" />
 
 
         </LinearLayout>

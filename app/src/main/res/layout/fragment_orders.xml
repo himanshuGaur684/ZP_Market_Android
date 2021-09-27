@@ -10,13 +10,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/purple_700"
         tools:context=".local.ui.orders.OrdersFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/customer_order_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orange">
+            android:background="@color/purple_700">
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Title"
@@ -24,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Orders"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
         </androidx.appcompat.widget.Toolbar>
 
 
@@ -32,7 +33,9 @@
             android:id="@+id/customer_order_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/purple_700"
             android:layout_below="@+id/customer_order_toolbar"
+            android:backgroundTint="@color/purple_700"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/view_holder_orders" />
 

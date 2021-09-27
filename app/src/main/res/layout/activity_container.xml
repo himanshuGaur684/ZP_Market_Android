@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_alignParentBottom="true"
-                android:background="@color/purple_500"
+                android:background="@color/purple_700"
                 app:itemIconTint="@drawable/customer_bottom_navigation_view"
                 app:itemRippleColor="@color/orange"
                 app:itemTextColor="@drawable/customer_bottom_navigation_view"
@@ -52,9 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:background="@color/surface_color"
+            android:background="@color/purple_700"
             app:itemIconTint="@color/black"
-
             app:itemTextColor="@color/black"
             app:menu="@menu/customer_toolbar_menu" />
     </androidx.drawerlayout.widget.DrawerLayout>

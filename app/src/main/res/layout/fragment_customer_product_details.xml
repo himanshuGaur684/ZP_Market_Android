@@ -19,23 +19,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/surface_color"
+        android:background="@color/purple_700"
         tools:context=".local.ui.product_details.CustomerProductDetailsFragment">
 
         <Toolbar
             android:id="@+id/product_details_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_200"
-            android:navigationIcon="@drawable/ic_back_whie"
+            android:background="@color/purple_700"
+            android:navigationIcon="@drawable/ic_back_white"
             android:title="Product Details"
-            android:titleTextColor="@color/white" />
+            android:titleTextColor="@color/black" />
 
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/product_details_toolbar">
+            android:layout_below="@+id/product_details_toolbar"
+            android:background="@color/purple_700">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,6 +53,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -218,8 +220,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="@{isOrder?View.GONE:View.VISIBLE}"
-                            android:layout_marginTop="32dp">
+                            android:layout_marginTop="32dp"
+                            android:visibility="@{isOrder?View.GONE:View.VISIBLE}">
 
                             <ProgressBar
                                 android:id="@+id/delete_progress"
@@ -232,14 +234,15 @@
                                 android:id="@+id/customer_add_to_cart_products"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
-                                android:backgroundTint="@color/purple_200"
                                 android:drawableTint="@color/white"
                                 android:fontFamily="@font/roboto_regular"
                                 android:text="Add to Cart"
                                 android:textAllCaps="false"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
-                                app:cardElevation="4dp" />
+                                app:backgroundTint="@color/red"
+                                app:cardElevation="4dp"
+                                app:cornerRadius="12dp" />
 
                         </RelativeLayout>
 
@@ -258,7 +261,9 @@
                             android:textAllCaps="false"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:visibility="@{detailsProduct.stocks==0?View.GONE:View.VISIBLE}" />
+                            android:visibility="@{detailsProduct.stocks==0?View.GONE:View.VISIBLE}"
+
+                            app:cornerRadius="12dp" />
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -272,19 +277,18 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="4dp">
+                        android:padding="12dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto_regular"
                             android:text="Product Overview"
                             android:textColor="@color/black"
@@ -296,11 +300,9 @@
                             android:id="@+id/seller_product_details_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
                             android:fontFamily="@font/roboto_regular"
-                            android:text="@{`Product Name: `+detailsProduct.name}"
+                            android:text="@{detailsProduct.name}"
                             android:textSize="16sp"
                             tools:text="Vivo v20 pro " />
 
@@ -308,12 +310,9 @@
                             android:id="@+id/seller_product_details_description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto_regular"
-                            android:text="@{`Product Description: `+detailsProduct.description}"
+                            android:text="@{detailsProduct.description}"
                             android:textSize="16sp"
 
                             tools:text="Vivo v20 pro" />
@@ -327,23 +326,19 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="4dp">
+                        android:padding="12dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto_regular"
                             android:text="Product Details"
                             android:textColor="@color/black"
@@ -354,10 +349,9 @@
                             android:id="@+id/seller_product_details"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
+
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="12dp"
-                            android:layout_marginBottom="8dp"
+
                             android:fontFamily="@font/roboto_regular"
                             android:text="@{detailsProduct.productDetails}"
                             android:textSize="16sp"
@@ -370,23 +364,20 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="4dp">
+                        android:padding="12dp">
 
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto_regular"
                             android:text="Product Features"
@@ -398,10 +389,7 @@
                             android:id="@+id/seller_product_details_features"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="12dp"
-                            android:layout_marginBottom="8dp"
                             android:fontFamily="@font/roboto_regular"
                             android:text="@{detailsProduct.productFeatures}"
                             android:textSize="16sp"
@@ -413,23 +401,21 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="4dp">
+                        android:padding="12dp">
 
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
+
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto_regular"
                             android:text="Product Packaging"
@@ -441,9 +427,8 @@
                             android:id="@+id/seller_product_packaging_features"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="12dp"
+
                             android:fontFamily="@font/roboto_regular"
                             android:text="@{detailsProduct.packagingDetails}"
                             android:textSize="16sp"
@@ -455,7 +440,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
+
                             android:fontFamily="@font/roboto_regular"
                             android:text="This product has Cash on delivery"
                             android:textColor="@color/orange"
@@ -470,6 +455,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -535,7 +521,8 @@
                             android:layout_marginTop="12dp"
                             android:backgroundTint="@color/red"
                             android:text="Write a Review"
-                            android:textAllCaps="false" />
+                            android:textAllCaps="false"
+                            app:cornerRadius="12dp" />
 
 
                         <TextView
